@@ -56,7 +56,21 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     correct: "Verwendung von != statt !== für null check",
     timeLimit: 60
   },
-  // ... (alle anderen Fragen hier einfügen)
+  {
+  id: 3,
+  type: "truefalse",
+  question: "Die Sonne geht im Westen auf.",
+  correct: false,
+  timeLimit: 30
+  },
+  {
+  id: 4,
+  type: "input",
+  question: "Wie viel ist 2 + 2?",
+  correct: "4",
+  timeLimit: 30
+  },
+
   {
     id: 10,
     type: "code",
