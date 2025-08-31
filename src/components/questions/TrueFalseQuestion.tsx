@@ -5,7 +5,7 @@ import { CheckCircle, XCircle } from 'lucide-react';
 import { TrueFalseQuestion as TrueFalseQuestionType } from '../../data/questions';
 
 // True/False Component
-const TrueFalseQuestion = ({ question, onAnswer }: { question: any; onAnswer: (answer: boolean) => void }) => {
+export const TrueFalseQuestion = ({ question, onAnswer }: { question: any; onAnswer: (answer: boolean) => void }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<boolean | null>(null);
 
   return (

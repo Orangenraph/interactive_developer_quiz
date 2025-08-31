@@ -1,3 +1,5 @@
+// src/App.tsx
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StartPage from "./pages/StartPage";
 import QuizPage from "./pages/QuizPage";

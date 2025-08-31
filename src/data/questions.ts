@@ -15,7 +15,7 @@ export interface McQuestion extends BaseQuestion {
   correct: number;
 }
 
-export interface CodeQuestion extends BaseQuestion {
+export interface CodeQuestions extends BaseQuestion {
   type: "code";
   code: string;
   correct: string;
@@ -26,12 +26,12 @@ export interface TrueFalseQuestion extends BaseQuestion {
   correct: boolean;
 }
 
-export interface InputQuestion extends BaseQuestion {
+export interface InputQuestions extends BaseQuestion {
   type: "input";
   correct: string;
 }
 
-export type QuizQuestion = McQuestion | CodeQuestion | TrueFalseQuestion | InputQuestion;
+export type QuizQuestion = McQuestion | CodeQuestions | TrueFalseQuestion | InputQuestions;
 
 // Jetzt die eigentlichen Daten
 export const QUIZ_QUESTIONS: QuizQuestion[] = [

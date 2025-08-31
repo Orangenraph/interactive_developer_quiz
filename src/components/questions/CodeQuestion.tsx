@@ -1,11 +1,10 @@
 // src/components/quiz/CodeQuestion.tsx
 
-import React from 'react';
-import { Timer } from 'lucide-react';
-import { CodeQuestion } from '../../data/questions'
+import React, { useState } from 'react';
+import { CodeQuestions } from '../../data/questions'
 
 // Code Question Component
-const CodeQuestion = ({ question, onAnswer }: { question: any; onAnswer: (answer: string) => void }) => {
+export const CodeQuestion = ({ question, onAnswer }: { question: any; onAnswer: (answer: string) => void }) => {
   const [answer, setAnswer] = useState('');
 
   return (

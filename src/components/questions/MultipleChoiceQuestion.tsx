@@ -1,9 +1,10 @@
 // src/components/questions/MultipleChoiceQuestion.tsx
+
 import React, { useState } from 'react';
 import { McQuestion } from '../../data/questions';
 
 // Multiple Choice Component
-const MultipleChoiceQuestion = ({ question, onAnswer }: { question: any; onAnswer: (answer: any) => void }) => {
+export const MultipleChoiceQuestion = ({ question, onAnswer }: { question: any; onAnswer: (answer: any) => void }) => {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
   return (
