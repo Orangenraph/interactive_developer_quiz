@@ -58,7 +58,7 @@ Bevor du beginnst, stelle sicher, dass die folgende Software auf deinem System i
 
 1.  **Klone das Repository:**
     ```bash
-    git clone https://github.com/dein-benutzername/interactive_developer_quiz.git
+    git clone https://github.com/orangenraph/interactive_developer_quiz.git
     ```
 
 2.  **Navigiere in das Projektverzeichnis:**
