@@ -34,9 +34,6 @@ export interface InputQuestions extends BaseQuestion {
 export type QuizQuestion = McQuestion | CodeQuestions | TrueFalseQuestion | InputQuestions;
 
 
-
-
-
 // Jetzt die eigentlichen Daten
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
@@ -48,7 +45,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     timeLimit: 60
   },
   {
-     id: 2,
+    id: 2,
     type: "code",
     question: "Was fehlt? Finde den Syntaxfehler in diesem JavaScript-Code:",
     code: `function getGreeting(name) {
@@ -60,7 +57,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     correct: "}", // Die erwartete Antwort ist das fehlende Zeichen
     timeLimit: 60
   },
- {
+  {
     id: 3,
     type: "truefalse",
     question: "HTTPS in einer Web-Adresse bedeutet, dass die Verbindung zwischen deinem Browser und der Webseite verschlüsselt und sicher ist.",
@@ -74,7 +71,46 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     correct: "Git",
     timeLimit: 30
   },
-
+  {
+    id: 5,
+    type: "mc",
+    question: "Welche dieser Speicherarten verliert ihre Daten, wenn der Computer ausgeschaltet wird?",
+    options: ["Festplatte", "RAM", "SSD", "USB-Stick"],
+    correct: 1,
+    timeLimit: 45
+  },
+  {
+    id: 6,
+    type: "truefalse",
+    question: "Ein Byte besteht aus 16 Bits.",
+    correct: false,
+    timeLimit: 20
+  },
+  {
+    id: 7,
+    type: "input",
+    question: "Welches Kürzel steht für das bekannteste Hypertext-Protokoll im Web?",
+    correct: "HTTP",
+    timeLimit: 25
+  },
+  {
+    id: 8,
+    type: "mc",
+    question: "Welches dieser Geräte ist ein Ausgabegerät?",
+    options: ["Tastatur", "Monitor", "Maus", "Scanner"],
+    correct: 1,
+    timeLimit: 30
+  },
+  {
+    id: 9,
+    type: "code",
+    question: "Fülle die fehlende Zahl ein, damit der Vergleich wahr ist:",
+    code: `if (2 + 2 === ___) {
+  console.log("Richtig!");
+}`,
+    correct: "4",
+    timeLimit: 30
+  },
   {
     id: 10,
     type: "code",
