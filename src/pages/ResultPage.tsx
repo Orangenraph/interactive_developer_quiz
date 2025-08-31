@@ -2,15 +2,28 @@
 
 import React from 'react';
 import { Trophy } from 'lucide-react';
+import { LoserAnimation } from '../components/results/LoserAnimation';
+import QuizPage from "./QuizPage";
 
 interface ResultPageProps {
   playerName: string;
   score: number;
   totalQuestions: number;
-  onNewGame: () => void;
+  onBackToStart: () => void;
+  lastQuestionCorrect?: boolean;
 }
 
-const ResultPage = ({ playerName, score, totalQuestions, onNewGame }: ResultPageProps) => {
+const ResultPage = ({ playerName, score, totalQuestions, onBackToStart, lastQuestionCorrect = true }: ResultPageProps) => {
+
+  // Wenn die letzte Frage falsch war, zeige die Loser Animation
+  if (!lastQuestionCorrect) {
+    return (
+      <LoserAnimation
+        playerName={playerName}
+        onBackToStart={onBackToStart}
+      />
+    );
+  }
   const getScoreMessage = () => {
     const percentage = (score / totalQuestions) * 100;
 
@@ -67,10 +80,10 @@ const ResultPage = ({ playerName, score, totalQuestions, onNewGame }: ResultPage
         </div>
 
         <button
-          onClick={onNewGame}
+          onClick={onBackToStart}
           className="bg-red-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 w-full"
         >
-          Neues Spiel starten
+          Zurück zum Start
         </button>
       </div>
     </div>

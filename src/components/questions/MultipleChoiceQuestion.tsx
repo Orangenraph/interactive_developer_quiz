@@ -20,8 +20,8 @@ export const MultipleChoiceQuestion = ({ question, onAnswer }: { question: any; 
             }}
             className={`p-4 text-left rounded-lg border-2 transition-all duration-200 ${
               selectedOption === index
-                ? 'border-red-500 bg-red-50 text-red-700'
-                : 'border-gray-200 hover:border-red-300 hover:bg-gray-50'
+                ? 'border-yellow-500 bg-yellow-100 text-yellow-900 font-bold' // <-- Geändert
+                : 'border-gray-200 hover:border-yellow-400 hover:bg-yellow-50' // <-- Geändert
             }`}
           >
             <span className="font-medium">{String.fromCharCode(65 + index)})</span> {option}

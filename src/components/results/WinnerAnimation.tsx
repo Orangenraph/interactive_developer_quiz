@@ -5,10 +5,10 @@ import { Trophy, Star, Zap, Award } from 'lucide-react';
 
 interface WinnerAnimationProps {
   playerName: string;
-  onNewGame: () => void;
+  onBackToStart: () => void;
 }
 
-export const WinnerAnimation = ({ playerName, onNewGame }: WinnerAnimationProps) => {
+export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationProps) => {
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-yellow-400 via-red-500 to-pink-500 flex items-center justify-center z-50">
       <div className="text-center text-white animate-bounce">
@@ -24,10 +24,10 @@ export const WinnerAnimation = ({ playerName, onNewGame }: WinnerAnimationProps)
           <Award className="w-8 h-8 text-yellow-300 animate-ping" style={{ animationDelay: '0.4s' }} />
         </div>
         <button
-          onClick={onNewGame}
+          onClick={onBackToStart}
           className="mt-8 bg-white text-red-600 py-3 px-8 rounded-lg font-bold text-xl hover:bg-gray-100 transition-colors"
         >
-          Neues Spiel starten
+          Zurück zum Start
         </button>
       </div>
     </div>
