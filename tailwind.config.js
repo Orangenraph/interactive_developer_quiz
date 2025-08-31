@@ -9,5 +9,11 @@ export default {
   theme: {
     extend: {},
   },
+  safelist: [
+    'animate-gradient',
+    'animate-blob',
+    'animation-delay-2000',
+    'animation-delay-4000',
+  ],
   plugins: [],
 }
