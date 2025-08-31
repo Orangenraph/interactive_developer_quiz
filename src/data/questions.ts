@@ -33,6 +33,10 @@ export interface InputQuestions extends BaseQuestion {
 
 export type QuizQuestion = McQuestion | CodeQuestions | TrueFalseQuestion | InputQuestions;
 
+
+
+
+
 // Jetzt die eigentlichen Daten
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
@@ -44,44 +48,39 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     timeLimit: 60
   },
   {
-    id: 2,
+     id: 2,
     type: "code",
-    question: "Finde den Bug in diesem Raiffeisen Payment Service Code:",
-    code: `function processPayment(amount, accountId) {
-  if (amount > 0 && accountId != null) {
-    return transferMoney(amount, accountId);
-  }
-  return false;
-}`,
-    correct: "Verwendung von != statt !== für null check",
+    question: "Was fehlt? Finde den Syntaxfehler in diesem JavaScript-Code:",
+    code: `function getGreeting(name) {
+      // Ein wichtiges Zeichen fehlt am Ende!
+      if (name) {
+        return "Hallo, " + name;
+      
+    }`,
+    correct: "}", // Die erwartete Antwort ist das fehlende Zeichen
     timeLimit: 60
   },
-  {
-  id: 3,
-  type: "truefalse",
-  question: "Die Sonne geht im Westen auf.",
-  correct: false,
-  timeLimit: 30
+ {
+    id: 3,
+    type: "truefalse",
+    question: "HTTPS in einer Web-Adresse bedeutet, dass die Verbindung zwischen deinem Browser und der Webseite verschlüsselt und sicher ist.",
+    correct: true,
+    timeLimit: 30
   },
   {
-  id: 4,
-  type: "input",
-  question: "Wie viel ist 2 + 2?",
-  correct: "4",
-  timeLimit: 30
+    id: 4,
+    type: "input",
+    question: "Wie heißt das weltweit populärste System zur Versionskontrolle von Code, das von Linus Torvalds entwickelt wurde?",
+    correct: "Git",
+    timeLimit: 30
   },
 
   {
     id: 10,
     type: "code",
-    question: "🏆 GOATED QUESTION: Optimiere diese Raiffeisen Transaction Query für bessere Performance:",
-    code: `SELECT * FROM transactions t 
-JOIN accounts a ON t.account_id = a.id 
-JOIN customers c ON a.customer_id = c.id 
-WHERE t.amount > 1000 
-AND t.created_at >= '2024-01-01'
-ORDER BY t.created_at DESC;`,
-    correct: "Index auf (amount, created_at), SELECT nur benötigte Spalten",
+    question: "🏆 GOATED QUESTION: Vervollständige die SQL-Abfrage, um die Namen (`name`) ALLER Kunden aus der Tabelle `customers` auszuwählen.",
+    code: `SELECT ______ FROM customers;`,
+    correct: "name", // Einfache Vervollständigung
     timeLimit: 60
   }
 ];

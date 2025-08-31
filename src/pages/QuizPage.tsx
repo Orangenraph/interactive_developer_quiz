@@ -213,7 +213,7 @@ const QuizPage = () => {
         <div className="text-center mt-6">
           <div className="bg-yellow-400 inline-block px-6 py-2 rounded-full">
             <p className="text-sm font-medium text-black">
-              Made by innovAIte
+              © Made by innovAIte
             </p>
           </div>
         </div>
