@@ -9,7 +9,7 @@ export const MultipleChoiceQuestion = ({ question, onAnswer }: { question: any; 
 
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4">{question.question}</h3>
+      <h3 className="text-xl font-semibold text-[#00383C] mb-4">{question.question}</h3>
       <div className="grid gap-3">
         {question.options.map((option: string, index: number) => (
           <button
@@ -18,13 +18,24 @@ export const MultipleChoiceQuestion = ({ question, onAnswer }: { question: any; 
               setSelectedOption(index);
               onAnswer(index);
             }}
-            className={`p-4 text-left rounded-lg border-2 transition-all duration-200 ${
+            className={`p-4 text-left rounded-xl border-2 transition-all duration-300 font-medium group overflow-hidden relative ${
               selectedOption === index
-                ? 'border-yellow-500 bg-yellow-100 text-yellow-900 font-bold' // <-- Geändert
-                : 'border-gray-200 hover:border-yellow-400 hover:bg-yellow-50' // <-- Geändert
+                ? 'border-[#007179] bg-gradient-to-r from-[#007179]/20 to-[#00383C]/10 text-[#00383C] font-bold shadow-lg'
+                : 'border-[#BFDCDE]/50 bg-white/30 hover:border-[#007179]/60 hover:bg-white/50 text-[#00383C]'
             }`}
           >
-            <span className="font-medium">{String.fromCharCode(65 + index)})</span> {option}
+            {/* Animated background on hover/select */}
+            <div className={`absolute inset-0 bg-gradient-to-r from-[#007179]/10 to-transparent opacity-0 ${
+              selectedOption === index ? 'opacity-100' : 'group-hover:opacity-50'
+            } transition-opacity duration-300 pointer-events-none`}></div>
+
+            {/* Content */}
+            <div className="relative z-10 flex items-start gap-3">
+              <span className="text-[#007179] font-bold text-lg flex-shrink-0">
+                {String.fromCharCode(65 + index)})
+              </span>
+              <span>{option}</span>
+            </div>
           </button>
         ))}
       </div>

@@ -9,22 +9,33 @@ export const InputQuestion = ({ question, onAnswer }: { question: any; onAnswer:
 
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4">{question.question}</h3>
+      <h3 className="text-xl font-semibold text-[#00383C] mb-4">{question.question}</h3>
+
       <div>
         <input
           type="text"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="Deine Antwort..."
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          className="w-full px-4 py-3 bg-white/40 backdrop-blur-md border border-[#007179]/30 rounded-xl text-[#00383C] placeholder-[#00383C]/50 focus:ring-2 focus:ring-[#007179]/60 focus:bg-white/50 focus:border-transparent transition-all duration-200 font-medium"
           onKeyPress={(e) => e.key === 'Enter' && answer.trim() && onAnswer(answer.trim())}
         />
+
         <button
           onClick={() => onAnswer(answer.trim())}
           disabled={!answer.trim()}
-          className="mt-3 bg-red-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+          className="mt-3 w-full relative group/btn overflow-hidden rounded-xl py-3 px-6 font-bold text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
         >
-          Antwort absenden
+          {/* Button background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00383C] via-[#007179] to-[#00383C] opacity-100 group-hover/btn:opacity-90 transition-opacity duration-300 disabled:opacity-50"></div>
+
+          {/* Animated shine effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-full group-hover/btn:translate-x-0 transition-transform duration-700 disabled:opacity-0"></div>
+
+          {/* Button content */}
+          <div className="relative flex items-center justify-center">
+            Antwort absenden
+          </div>
         </button>
       </div>
     </div>

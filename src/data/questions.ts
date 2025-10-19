@@ -114,7 +114,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 10,
     type: "code",
-    question: "🏆 GOATED QUESTION: Vervollständige die SQL-Abfrage, um die Namen (`name`) ALLER Kunden aus der Tabelle `customers` auszuwählen.",
+    question: "Vervollständige die SQL-Abfrage, um die Namen (`name`) ALLER Kunden aus der Tabelle `customers` auszuwählen.",
     code: `SELECT ______ FROM customers;`,
     correct: "name", // Einfache Vervollständigung
     timeLimit: 60

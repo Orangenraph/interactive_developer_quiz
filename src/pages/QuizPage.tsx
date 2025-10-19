@@ -7,8 +7,7 @@ import { QuestionRenderer } from '../components/questions/QuestionRenderer';
 import { WinnerAnimation } from '../components/results/WinnerAnimation';
 import ResultPage from './ResultPage';
 
-// NEU: Importiere die neuen Komponenten
-import QuizProgressBar from '../components/quiz/QuizProgressBar';
+import QuizHeader from '../components/quiz/QuizHeader';
 import QuizTimer from '../components/quiz/QuizTimer';
 
 interface QuizState {
@@ -22,8 +21,8 @@ interface QuizState {
 }
 
 const QuizPage = () => {
-  const playerName = 'Spieler';
-  const TOTAL_TIME_PER_QUESTION = 60; // Konstante für die Zeit
+  const playerName = localStorage.getItem('quizPlayerName') || 'Goaty';
+  const TOTAL_TIME_PER_QUESTION = 60;
 
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestionIndex: 0,
@@ -38,7 +37,6 @@ const QuizPage = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
-  // Timer Logic (bleibt hier, da es den App-Status steuert)
   useEffect(() => {
     if (isTimerActive && quizState.timeLeft > 0 && !quizState.isComplete) {
       timerRef.current = setTimeout(() => {
@@ -129,17 +127,12 @@ const QuizPage = () => {
     setIsTimerActive(true);
   };
 
-  // Restliche Funktionen (finishQuiz, navigateToStart, resetQuiz) bleiben unverändert...
   const finishQuiz = () => { /* ... */ };
   const navigateToStart = () => { window.location.href = '/'; };
   const resetQuiz = () => { /* ... */ };
 
-
   const currentQuestion = QUIZ_QUESTIONS[quizState.currentQuestionIndex];
   const isLastQuestion = quizState.currentQuestionIndex === QUIZ_QUESTIONS.length - 1;
-  // ENTFERNT: const percentage = (quizState.timeLeft / 60) * 100;
-  // ENTFERNT: const isLowTime = quizState.timeLeft <= 15;
-
 
   if (quizState.isComplete && !quizState.showWinnerAnimation) {
     return (
@@ -154,7 +147,7 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#BFDCDE] via-[#E5F1F2] to-[#BFDCDE] p-4">
       {quizState.showWinnerAnimation && (
         <WinnerAnimation
           playerName={playerName}
@@ -163,26 +156,13 @@ const QuizPage = () => {
       )}
 
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl shadow-lg p-6 mb-6 text-black">
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <h1 className="text-2xl font-bold">
-                Raiffeisen Developer Quiz
-              </h1>
-              <p className="text-sm opacity-80">Developer Conference 2025</p>
-            </div>
-            <div className="text-right bg-white bg-opacity-20 rounded-lg p-3">
-              <p className="text-sm font-medium">Spieler</p>
-              <p className="font-bold text-lg">{playerName}</p>
-            </div>
-          </div>
-
-          <QuizProgressBar
-            currentQuestion={quizState.currentQuestionIndex + 1}
-            totalQuestions={QUIZ_QUESTIONS.length}
-          />
-        </div>
+        {/* QuizHeader mit isLastQuestion und ProgressBar */}
+        <QuizHeader
+          playerName={playerName}
+          currentQuestion={quizState.currentQuestionIndex + 1}
+          totalQuestions={QUIZ_QUESTIONS.length}
+          isLastQuestion={isLastQuestion}
+        />
 
         <QuizTimer
           timeLeft={quizState.timeLeft}
@@ -190,17 +170,7 @@ const QuizPage = () => {
         />
 
         {/* Question Card */}
-        <div className="bg-white border-2 border-yellow-400 rounded-xl shadow-lg p-8">
-          {isLastQuestion && (
-            <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black p-4 rounded-lg mb-6 text-center border-2 border-black">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Trophy className="w-6 h-6" />
-                <span className="font-bold text-lg">🏦 GOATED RAIFFEISEN QUESTION 🏦</span>
-                <Trophy className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-medium">Die finale Banking-Challenge! 🔥💰</p>
-            </div>
-          )}
+        <div className="backdrop-blur-xl bg-[#BFDCDE]/90 border border-[#007179]/40 rounded-2xl shadow-xl p-8 overflow-hidden group">
 
           <QuestionRenderer
             question={currentQuestion}
@@ -210,9 +180,9 @@ const QuizPage = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-6">
-          <div className="bg-yellow-400 inline-block px-6 py-2 rounded-full">
-            <p className="text-sm font-medium text-black">
+        <div className="text-center mt-8">
+          <div className="backdrop-blur-md bg-[#007179]/20 border border-[#007179]/30 inline-block px-6 py-2.5 rounded-full">
+            <p className="text-sm font-medium text-[#00383C]">
               © Made by innovAIte
             </p>
           </div>

@@ -35,10 +35,10 @@ const StartPage = () => {
           pixelSize={2}
           color="#BFDCDE"
           patternScale={1.5}
-          patternDensity={3}
+          patternDensity={2}
           pixelSizeJitter={0}
           speed={2}
-          edgeFade={0.2}
+          edgeFade={0}
           enableRipples
         />
       </div>
