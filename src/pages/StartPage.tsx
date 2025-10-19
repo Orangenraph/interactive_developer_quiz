@@ -40,16 +40,20 @@ const StartPage = () => {
           speed={2}
           edgeFade={0}
           enableRipples
+          liquid={false}
+          rippleIntensityScale={1.8}
+          rippleThickness={0.12}
+          rippleSpeed={0.4}
         />
       </div>
 
       {/* Inhalt */}
-      <div className="relative w-full max-w-md group">
+      <div className="relative w-full max-w-md group pointer-events-none">
         {/* Liquid gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/20 rounded-3xl blur-xl opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-white/20 rounded-3xl blur-xl opacity-60 pointer-events-none"></div>
 
         {/* Main container */}
-        <div className="relative backdrop-blur-xl bg-[#BFDCDE]/70 border border-[#007179]/30 rounded-3xl shadow-2xl p-8 overflow-hidden transition-all duration-300">
+        <div className="relative backdrop-blur-xl bg-[#BFDCDE]/70 border border-[#007179]/30 rounded-3xl shadow-2xl p-8 overflow-hidden transition-all duration-300 pointer-events-none">
 
           {/* Animated gradient orb that follows cursor */}
           <div
@@ -61,36 +65,36 @@ const StartPage = () => {
 
           {/* Content */}
           <div className="relative z-10">
-            <div className="relative mb-8">
+            <div className="relative mb-8 pointer-events-none">
               {/* Leaderboard Button - Top Right Corner */}
               <button
                 onClick={() => navigate('/leaderboard')}
-                className="absolute top-0 right-0 group/lb backdrop-blur-xl bg-[#BFDCDE]/60 border border-[#007179]/30 rounded-2xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-[#BFDCDE]/80"
+                className="absolute top-0 right-0 group/lb backdrop-blur-xl bg-[#BFDCDE]/60 border border-[#007179]/30 rounded-2xl p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-[#BFDCDE]/80 pointer-events-auto"
               >
                 <Trophy className="w-6 h-6 text-[#007179] group-hover/lb:text-[#00383C] transition-colors duration-300" />
               </button>
 
-              <div className="text-center">
-                <div className="w-48 h-48 flex items-center justify-center mx-auto mb-6 rounded-2xl backdrop-blur-md bg-white/20 border border-[#007179]/20 shadow-lg">
-                  <img src={DevGoat_Sticker} alt="DevGoat Sticker" className="w-full h-full object-contain"/>
+              <div className="text-center pointer-events-none">
+                <div className="w-48 h-48 flex items-center justify-center mx-auto mb-6 rounded-2xl backdrop-blur-md bg-white/20 border border-[#007179]/20 shadow-lg pointer-events-none">
+                  <img src={DevGoat_Sticker} alt="DevGoat Sticker" className="w-full h-full object-contain pointer-events-none"/>
                 </div>
-                <h1 className="text-4xl font-bold text-[#00383C] mb-2">RSG DevCon</h1>
-                <h2 className="text-3xl font-semibold text-[#007179] mb-2">Developer Quiz</h2>
-                <p className="text-[#00383C]/70">Teste dein Wissen in 10 spannenden Fragen!</p>
+                <h1 className="text-4xl font-bold text-[#00383C] mb-2 pointer-events-none">RSG DevCon</h1>
+                <h2 className="text-3xl font-semibold text-[#007179] mb-2 pointer-events-none">Developer Quiz</h2>
+                <p className="text-[#00383C]/70 pointer-events-none">Teste dein Wissen in 10 spannenden Fragen!</p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div>
-                <label className="px-1 block text-sm font-medium text-[#00383C] mb-2">Vorname, Nachname</label>
-                <div className="relative">
+            <div className="space-y-4 pointer-events-none">
+              <div className="pointer-events-none">
+                <label className="px-1 block text-sm font-medium text-[#00383C] mb-2 pointer-events-none">Vorname, Nachname</label>
+                <div className="relative pointer-events-none">
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Entwickler Name eingeben..."
                     onKeyPress={(e) => e.key === 'Enter' && handleStartQuiz(name)}
-                    className="w-full px-4 py-3 rounded-xl backdrop-blur-md bg-white/30 border border-[#007179]/30 text-[#00383C] placeholder-[#00383C]/40 focus:outline-none focus:ring-2 focus:ring-[#007179]/60 focus:bg-white/40 transition-all duration-200 font-medium"
+                    className="w-full px-4 py-3 rounded-xl backdrop-blur-md bg-white/30 border border-[#007179]/30 text-[#00383C] placeholder-[#00383C]/40 focus:outline-none focus:ring-2 focus:ring-[#007179]/60 focus:bg-white/40 transition-all duration-200 font-medium pointer-events-auto"
                   />
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#007179]/0 via-white/0 to-[#007179]/0 opacity-0 hover:opacity-20 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
@@ -99,7 +103,7 @@ const StartPage = () => {
               <button
                 onClick={() => handleStartQuiz(name)}
                 disabled={!name.trim()}
-                className="w-full relative group/btn overflow-hidden rounded-xl py-3 px-6 font-bold text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                className="w-full relative group/btn overflow-hidden rounded-xl py-3 px-6 font-bold text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl pointer-events-auto"
               >
                 {/* Button background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#00383C] via-[#007179] to-[#00383C] opacity-100 group-hover/btn:opacity-90 transition-opacity duration-300"></div>
@@ -115,8 +119,8 @@ const StartPage = () => {
               </button>
             </div>
 
-            <div className="mt-6 text-center text-sm text-[#00383C]/60 border-t border-[#007179]/20 pt-4">
-              <p>10 Fragen • 1 Minute pro Frage</p>
+              <div className="mt-6 text-center text-sm text-[#00383C]/60 border-t border-[#007179]/20 pt-4 pointer-events-none">
+                <p className="pointer-events-none">10 Fragen • 1 Minute pro Frage</p>
             </div>
           </div>
         </div>

@@ -187,7 +187,7 @@ const int SHAPE_CIRCLE   = 1;
 const int SHAPE_TRIANGLE = 2;
 const int SHAPE_DIAMOND  = 3;
 
-const int   MAX_CLICKS = 10;
+const int   MAX_CLICKS = 20;
 
 uniform vec2  uClickPos  [MAX_CLICKS];
 uniform float uClickTimes[MAX_CLICKS];
@@ -282,21 +282,50 @@ void main(){
 
   float speed     = uRippleSpeed;
   float thickness = uRippleThickness;
-  const float dampT     = 1.0;
-  const float dampR     = 10.0;
 
   if (uEnableRipples == 1) {
     for (int i = 0; i < MAX_CLICKS; ++i){
       vec2 pos = uClickPos[i];
       if (pos.x < 0.0) continue;
+      
       float cellPixelSize = 8.0 * pixelSize;
       vec2 cuv = (((pos - uResolution * .5 - cellPixelSize * .5) / (uResolution))) * vec2(aspectRatio, 1.0);
-      float t = max(uTime - uClickTimes[i], 0.0);
-      float r = distance(uv, cuv);
-      float waveR = speed * t;
-      float ring  = exp(-pow((r - waveR) / thickness, 2.0));
-      float atten = exp(-dampT * t) * exp(-dampR * r);
-      feed = max(feed, ring * atten * uRippleIntensity);
+      
+      // Time since this point was created
+      float age = max(uTime - uClickTimes[i], 0.0);
+      
+      // Distance from this trail point
+      float dist = distance(uv, cuv);
+      
+      // For held points (age near 0), add animated movement
+      bool isBeingHeld = age < 0.05;
+      float wobble = 0.0;
+      if (isBeingHeld) {
+        // Add some organic movement using multiple sine waves
+        float angle = atan(uv.y - cuv.y, uv.x - cuv.x);
+        wobble = sin(uTime * 3.0 + angle * 4.0) * 0.003;
+        wobble += sin(uTime * 2.3 - angle * 3.0) * 0.002;
+        dist += wobble;
+      }
+      
+      // Trail gets thinner as it ages
+      float ageFactor = clamp(1.0 - age * 0.5, 0.0, 1.0);
+      
+      // Add subtle pulsing to held circles
+      float pulse = 1.0;
+      if (isBeingHeld) {
+        pulse = 1.0 + sin(uTime * 4.0) * 0.04;
+      }
+      
+      float currentThickness = thickness * ageFactor * pulse;
+      
+      // Create a soft circle (not a ring)
+      float circle = exp(-pow(dist / currentThickness, 2.0) * 4.0);
+      
+      // Fade out over time (slower fade for longer trail)
+      float fadeOut = exp(-age * 0.8);
+      
+      feed = max(feed, circle * fadeOut * uRippleIntensity);
     }
   }
 
@@ -324,7 +353,7 @@ void main(){
 }
 `;
 
-const MAX_CLICKS = 10;
+const MAX_CLICKS = 20;
 
 const PixelBlast: React.FC<PixelBlastProps> = ({
   variant = 'square',
@@ -533,19 +562,54 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
           h: renderer.domElement.height
         };
       };
-      const onPointerDown = (e: PointerEvent) => {
-        const { fx, fy } = mapToPixels(e);
-        const ix = threeRef.current?.clickIx ?? 0;
-        uniforms.uClickPos.value[ix].set(fx, fy);
-        uniforms.uClickTimes.value[ix] = uniforms.uTime.value;
-        if (threeRef.current) threeRef.current.clickIx = (ix + 1) % MAX_CLICKS;
+      let isPointerDown = false;
+      let trailIndex = 0;
+      let activePointIndex = -1; // Track the current active point while holding
+      
+      const addTrailPoint = (fx: number, fy: number) => {
+        // Add a new trail point at the next slot
+        uniforms.uClickPos.value[trailIndex].set(fx, fy);
+        uniforms.uClickTimes.value[trailIndex] = uniforms.uTime.value;
+        activePointIndex = trailIndex;
+        trailIndex = (trailIndex + 1) % MAX_CLICKS;
+        if (threeRef.current) threeRef.current.clickIx = trailIndex;
       };
+      
+      const updateActivePoint = () => {
+        // Keep updating the time of the active point while holding
+        if (isPointerDown && activePointIndex >= 0) {
+          uniforms.uClickTimes.value[activePointIndex] = uniforms.uTime.value;
+        }
+      };
+
+      const onPointerDown = (e: PointerEvent) => {
+        isPointerDown = true;
+        const { fx, fy } = mapToPixels(e);
+        addTrailPoint(fx, fy);
+      };
+
+      const onPointerUp = () => {
+        isPointerDown = false;
+        activePointIndex = -1;
+      };
+
       const onPointerMove = (e: PointerEvent) => {
+        if (isPointerDown) {
+          const { fx, fy } = mapToPixels(e);
+          addTrailPoint(fx, fy);
+        }
         if (!touch) return;
         const { fx, fy, w, h } = mapToPixels(e);
         touch.addTouch({ x: fx / w, y: fy / h });
       };
+
       renderer.domElement.addEventListener('pointerdown', onPointerDown, {
+        passive: true
+      });
+      renderer.domElement.addEventListener('pointerup', onPointerUp, {
+        passive: true
+      });
+      renderer.domElement.addEventListener('pointerleave', onPointerUp, {
         passive: true
       });
       renderer.domElement.addEventListener('pointermove', onPointerMove, {
@@ -558,6 +622,10 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
           return;
         }
         uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current;
+        
+        // Keep the active point "fresh" while holding
+        updateActivePoint();
+        
         if (liquidEffect) (liquidEffect as any).uniforms.get('uTime').value = uniforms.uTime.value;
         if (composer) {
           if (touch) touch.update();
