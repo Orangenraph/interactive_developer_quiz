@@ -1,55 +1,85 @@
 // src/pages/LeaderboardPage.tsx
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PixelBlast from '../utils/PixelBlast';
+import { Download, Trash2 } from 'lucide-react';
 import LeaderboardCard from '../components/leaderboard/LeaderboardCard';
 import LeaderboardHeader from '../components/leaderboard/LeaderboardHeader';
 import BackButton from '../components/leaderboard/BackButton';
-
-interface LeaderboardEntry {
-  rank: number;
-  name: string;
-  score: number;
-  date: string;
-}
+import { PlayerStorage, LeaderboardEntry } from '../services/PlayerStorage';
 
 const LeaderboardPage = () => {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [message, setMessage] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const mockData: LeaderboardEntry[] = [
-      { rank: 1, name: 'Max Developer', score: 100, date: '2025-10-20' },
-      { rank: 2, name: 'Sarah Coder', score: 95, date: '2025-10-19' },
-      { rank: 3, name: 'John Builder', score: 90, date: '2025-10-18' },
-      { rank: 4, name: 'Emma Script', score: 85, date: '2025-10-17' },
-      { rank: 5, name: 'Chris Tech', score: 80, date: '2025-10-16' },
-      { rank: 6, name: 'Lisa Code', score: 75, date: '2025-10-15' },
-      { rank: 7, name: 'Mark React', score: 70, date: '2025-10-14' },
-      { rank: 8, name: 'Nina Full-Stack', score: 65, date: '2025-10-13' },
-    ];
-
-    setTimeout(() => {
-      setEntries(mockData);
-      setIsLoading(false);
-    }, 500);
+    loadLeaderboard();
   }, []);
+
+  const loadLeaderboard = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      const leaderboard = PlayerStorage.getLeaderboard();
+      setEntries(leaderboard);
+      setIsLoading(false);
+    }, 300);
+  };
+
+  const handleDownloadCSV = () => {
+    const allResults = PlayerStorage.loadAllResults();
+
+    if (allResults.length === 0) {
+      setMessage('Keine Ergebnisse zum Herunterladen');
+      setTimeout(() => setMessage(''), 3000);
+      return;
+    }
+
+    const headers = ['Name', 'Score', 'Zeit', 'Datum'];
+    const rows = allResults.map(r => [
+      `"${r.name.replace(/"/g, '""')}"`,
+      r.score,
+      r.timeTaken,
+      r.date
+    ]);
+
+    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `quiz_results_${new Date().toISOString().split('T')[0]}.csv`;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setMessage('CSV erfolgreich heruntergeladen!');
+    setTimeout(() => setMessage(''), 3000);
+  };
+
+  const handleClearResults = () => {
+    if (window.confirm('Möchtest du wirklich alle Ergebnisse löschen?')) {
+      PlayerStorage.clearAllResults();
+      setEntries([]);
+      setMessage('Alle Ergebnisse gelöscht');
+      setTimeout(() => setMessage(''), 3000);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Raiffeisen Teal Header Section */}
+      {/* Header Section */}
       <div className="w-full text-white py-20" style={{
         background: '#007179',
         borderBottomLeftRadius: '120px'
       }}>
         <div className="max-w-6xl mx-auto px-4">
-          {/* Back Button */}
           <div className="mb-8">
             <BackButton onClick={() => navigate('/')} variant="light" />
           </div>
 
-          {/* Header Content */}
           <div className="text-center">
             <LeaderboardHeader />
           </div>
@@ -58,6 +88,35 @@ const LeaderboardPage = () => {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 pb-12 mt-12">
+        {/* Controls */}
+        <div className="mb-8 flex flex-wrap gap-4 justify-center">
+          <button
+            onClick={handleDownloadCSV}
+            className="flex items-center gap-2 px-4 py-2 bg-[#007179] text-white rounded-lg hover:bg-[#00383C] transition-colors font-medium"
+          >
+            <Download className="w-4 h-4" />
+            CSV herunterladen
+          </button>
+
+          {entries.length > 0 && (
+            <button
+              onClick={handleClearResults}
+              className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-medium"
+            >
+              <Trash2 className="w-4 h-4" />
+              Alle löschen
+            </button>
+          )}
+        </div>
+
+        {/* Message Display */}
+        {message && (
+          <div className="mb-6 p-4 bg-blue-100 border border-blue-300 text-blue-800 rounded-lg text-center font-medium">
+            {message}
+          </div>
+        )}
+
+        {/* Leaderboard Display */}
         {isLoading ? (
           <div className="flex items-center justify-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{

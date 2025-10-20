@@ -6,7 +6,7 @@ import { QUIZ_QUESTIONS, QuizQuestion } from '../data/questions';
 import { QuestionRenderer } from '../components/questions/QuestionRenderer';
 import { WinnerAnimation } from '../components/results/WinnerAnimation';
 import ResultPage from './ResultPage';
-
+import { PlayerStorage } from '../services/PlayerStorage';
 import QuizHeader from '../components/quiz/QuizHeader';
 import QuizTimer from '../components/quiz/QuizTimer';
 
@@ -23,6 +23,7 @@ interface QuizState {
 const QuizPage = () => {
   const playerName = localStorage.getItem('quizPlayerName') || 'Goaty';
   const TOTAL_TIME_PER_QUESTION = 60;
+  const startTimeRef = useRef<number>(Date.now());
 
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestionIndex: 0,
@@ -79,7 +80,9 @@ const QuizPage = () => {
     }));
 
     if (!isCorrect) {
+      // Player failed - save result and complete quiz
       setTimeout(() => {
+        saveQuizResult(playerName, newScore, false);
         setQuizState(prev => ({
           ...prev,
           isComplete: true
@@ -89,7 +92,9 @@ const QuizPage = () => {
     }
 
     if (quizState.currentQuestionIndex === QUIZ_QUESTIONS.length - 1 && isCorrect) {
+      // Player completed all questions - save result and show winner animation
       setTimeout(() => {
+        saveQuizResult(playerName, newScore, true);
         setQuizState(prev => ({
           ...prev,
           showWinnerAnimation: true,
@@ -97,10 +102,29 @@ const QuizPage = () => {
         }));
       }, 1500);
     } else {
+      // Continue to next question
       setTimeout(() => {
         nextQuestion();
       }, 1500);
     }
+  };
+
+  const saveQuizResult = (name: string, score: number, completed: boolean) => {
+    const now = new Date();
+    const elapsedSeconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
+    const minutes = Math.floor(elapsedSeconds / 60);
+    const seconds = elapsedSeconds % 60;
+    const timeTaken = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+    const playerRecord = {
+      name,
+      score,
+      totalQuestions: QUIZ_QUESTIONS.length,
+      timeTaken,
+      date: now.toISOString().split('T')[0]
+    };
+
+    PlayerStorage.savePlayerResult(playerRecord);
   };
 
   const checkAnswer = (question: QuizQuestion, answer: any): boolean => {
@@ -127,9 +151,7 @@ const QuizPage = () => {
     setIsTimerActive(true);
   };
 
-  const finishQuiz = () => { /* ... */ };
   const navigateToStart = () => { window.location.href = '/'; };
-  const resetQuiz = () => { /* ... */ };
 
   const currentQuestion = QUIZ_QUESTIONS[quizState.currentQuestionIndex];
   const isLastQuestion = quizState.currentQuestionIndex === QUIZ_QUESTIONS.length - 1;
@@ -156,7 +178,6 @@ const QuizPage = () => {
       )}
 
       <div className="max-w-4xl mx-auto">
-        {/* QuizHeader mit isLastQuestion und ProgressBar */}
         <QuizHeader
           playerName={playerName}
           currentQuestion={quizState.currentQuestionIndex + 1}
@@ -169,9 +190,7 @@ const QuizPage = () => {
           totalTime={TOTAL_TIME_PER_QUESTION}
         />
 
-        {/* Question Card */}
         <div className="backdrop-blur-xl bg-[#BFDCDE]/90 border border-[#007179]/40 rounded-2xl shadow-xl p-8 overflow-hidden group">
-
           <QuestionRenderer
             question={currentQuestion}
             onAnswer={handleAnswer}
@@ -179,7 +198,6 @@ const QuizPage = () => {
           />
         </div>
 
-        {/* Footer */}
         <div className="text-center mt-8">
           <div className="backdrop-blur-md bg-[#007179]/20 border border-[#007179]/30 inline-block px-6 py-2.5 rounded-full">
             <p className="text-sm font-medium text-[#00383C]">

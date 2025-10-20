@@ -1,11 +1,12 @@
-// src/components/LeaderboardCard.tsx
+// src/components/leaderboard/LeaderboardCard.tsx
 import React from 'react';
-import { Medal, Crown } from 'lucide-react';
+import { Medal, Crown, Clock } from 'lucide-react';
 
 interface LeaderboardEntry {
   rank: number;
   name: string;
-  score: number;
+  score: string;
+  timeTaken: string;
   date: string;
 }
 
@@ -38,12 +39,12 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ entries }) => {
     <div className="space-y-2">
       {entries.map((entry) => (
         <div
-          key={entry.rank}
+          key={`${entry.rank}-${entry.name}-${entry.date}`}
           className={`relative group overflow-hidden rounded-xl backdrop-blur-md bg-white/20 border border-[#007179]/30 p-4 transition-all duration-300 hover:bg-white/30 hover:border-[#007179]/50 ${
             getRowGradient(entry.rank) ? `bg-gradient-to-r ${getRowGradient(entry.rank)}` : ''
           }`}
         >
-          <div className="relative z-10 flex items-center justify-between">
+          <div className="relative z-10 flex items-center justify-between gap-4">
             <div className="flex items-center gap-4 flex-1">
               <div className="flex items-center justify-center w-10">
                 {entry.rank <= 3 ? (
@@ -53,8 +54,14 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ entries }) => {
                 )}
               </div>
               <div className="flex-1">
-                <p className="font-semibold text-[#00383C]">{entry.name}</p>
-                <p className="text-sm text-[#00383C]/60">{entry.date}</p>
+                <p className="font-semibold text-[#00383C] text-lg">{entry.name}</p>
+                <div className="flex items-center gap-3 mt-1">
+                  <p className="text-sm text-[#00383C]/60">{entry.date}</p>
+                  <div className="flex items-center gap-1 text-[#007179]/70">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span className="text-sm font-medium">{entry.timeTaken}</span>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="text-right">
