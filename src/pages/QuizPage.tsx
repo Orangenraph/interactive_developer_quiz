@@ -8,7 +8,7 @@ import { WinnerAnimation } from '../components/results/WinnerAnimation';
 import ResultPage from './ResultPage';
 import { PlayerStorage } from '../services/PlayerStorage';
 import QuizHeader from '../components/quiz/QuizHeader';
-import QuizTimer from '../components/quiz/QuizTimer';
+import BackButton from '../components/leaderboard/BackButton';
 
 interface QuizState {
   currentQuestionIndex: number;
@@ -37,6 +37,7 @@ const QuizPage = () => {
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [isTimerActive, setIsTimerActive] = useState(true);
+  const [isAnswering, setIsAnswering] = useState(false);
 
   useEffect(() => {
     if (isTimerActive && quizState.timeLeft > 0 && !quizState.isComplete) {
@@ -64,7 +65,9 @@ const QuizPage = () => {
   };
 
   const handleAnswer = (answer: any) => {
+    if (isAnswering) return;
     setIsTimerActive(false);
+    setIsAnswering(true);
 
     const currentQuestion = QUIZ_QUESTIONS[quizState.currentQuestionIndex];
     const isCorrect = checkAnswer(currentQuestion, answer);
@@ -105,6 +108,7 @@ const QuizPage = () => {
       // Continue to next question
       setTimeout(() => {
         nextQuestion();
+        setIsAnswering(false);
       }, 1500);
     }
   };
@@ -169,7 +173,7 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#BFDCDE] via-[#E5F1F2] to-[#BFDCDE] p-4">
+    <div className="min-h-screen bg-white">
       {quizState.showWinnerAnimation && (
         <WinnerAnimation
           playerName={playerName}
@@ -177,20 +181,30 @@ const QuizPage = () => {
         />
       )}
 
-      <div className="max-w-4xl mx-auto">
-        <QuizHeader
-          playerName={playerName}
-          currentQuestion={quizState.currentQuestionIndex + 1}
-          totalQuestions={QUIZ_QUESTIONS.length}
-          isLastQuestion={isLastQuestion}
-        />
+      {/* Quiz Header with Progress Bar */}
+      <QuizHeader
+        playerName={playerName}
+        currentQuestion={quizState.currentQuestionIndex + 1}
+        totalQuestions={QUIZ_QUESTIONS.length}
+        isLastQuestion={isLastQuestion}
+      />
 
-        <QuizTimer
-          timeLeft={quizState.timeLeft}
-          totalTime={TOTAL_TIME_PER_QUESTION}
-        />
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 pb-12">
+        {/* Score and Time Info */}
+        <div className="mb-8 flex justify-center gap-8 flex-wrap">
+          <div className="bg-white border-2 border-[#007179] rounded-lg px-6 py-3 text-center">
+            <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">Punkte</p>
+            <p className="text-2xl font-bold text-[#007179]">{quizState.score}</p>
+          </div>
+          <div className="bg-white border-2 border-[#007179] rounded-lg px-6 py-3 text-center">
+            <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">Zeit verbleibend</p>
+            <p className="text-2xl font-bold text-[#007179]">{quizState.timeLeft}s</p>
+          </div>
+        </div>
 
-        <div className="backdrop-blur-xl bg-[#BFDCDE]/90 border border-[#007179]/40 rounded-2xl shadow-xl p-8 overflow-hidden group">
+        {/* Question Card */}
+        <div className="bg-white border-2 border-[#007179] rounded-2xl shadow-lg p-8 mb-8">
           <QuestionRenderer
             question={currentQuestion}
             onAnswer={handleAnswer}
@@ -198,8 +212,11 @@ const QuizPage = () => {
           />
         </div>
 
-        <div className="text-center mt-8">
-          <div className="backdrop-blur-md bg-[#007179]/20 border border-[#007179]/30 inline-block px-6 py-2.5 rounded-full">
+        {/* Footer */}
+        <div className="text-center">
+          <div className="inline-block px-6 py-2.5 rounded-full" style={{
+            backgroundColor: '#00717922'
+          }}>
             <p className="text-sm font-medium text-[#00383C]">
               © Made by innovAIte
             </p>
