@@ -243,7 +243,7 @@ const QuizPage = () => {
         />
       )}
 
-      <div className="max-w-4xl mx-auto">
+      <div className="mx-auto">
         {/* QuizHeader mit isLastQuestion und ProgressBar */}
         <QuizHeader
           playerName={playerName}
