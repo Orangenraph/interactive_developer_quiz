@@ -6,9 +6,9 @@ import { QUIZ_QUESTIONS, QuizQuestion } from '../data/questions';
 import { QuestionRenderer } from '../components/questions/QuestionRenderer';
 import { WinnerAnimation } from '../components/results/WinnerAnimation';
 import ResultPage from './ResultPage';
-
+import { PlayerStorage } from '../services/PlayerStorage';
 import QuizHeader from '../components/quiz/QuizHeader';
-import QuizTimer from '../components/quiz/QuizTimer';
+import BackButton from '../components/leaderboard/BackButton';
 
 interface QuizState {
   currentQuestionIndex: number;
@@ -23,6 +23,7 @@ interface QuizState {
 const QuizPage = () => {
   const playerName = localStorage.getItem('quizPlayerName') || 'Goaty';
   const TOTAL_TIME_PER_QUESTION = 60;
+  const startTimeRef = useRef<number>(Date.now());
 
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestionIndex: 0,
@@ -36,6 +37,7 @@ const QuizPage = () => {
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [isTimerActive, setIsTimerActive] = useState(true);
+  const [isAnswering, setIsAnswering] = useState(false);
 
   // NEW: the chosen 10 questions for this run (3 easy, 3 medium, 3 hard, 1 goated)
   const [questionSet, setQuestionSet] = useState<QuizQuestion[]>([]);
@@ -114,7 +116,9 @@ const QuizPage = () => {
   };
 
   const handleAnswer = (answer: any) => {
+    if (isAnswering) return;
     setIsTimerActive(false);
+    setIsAnswering(true);
 
     // USE questionSet instead of whole pool
     const currentQuestion = questionSet[quizState.currentQuestionIndex];
@@ -131,7 +135,9 @@ const QuizPage = () => {
     }));
 
     if (!isCorrect) {
+      // Player failed - save result and complete quiz
       setTimeout(() => {
+        saveQuizResult(playerName, newScore, false);
         setQuizState(prev => ({
           ...prev,
           isComplete: true
@@ -140,8 +146,11 @@ const QuizPage = () => {
       return;
     }
 
+
     if (quizState.currentQuestionIndex === questionSet.length - 1 && isCorrect) {
+
       setTimeout(() => {
+        saveQuizResult(playerName, newScore, true);
         setQuizState(prev => ({
           ...prev,
           showWinnerAnimation: true,
@@ -149,10 +158,30 @@ const QuizPage = () => {
         }));
       }, 1500);
     } else {
+      // Continue to next question
       setTimeout(() => {
         nextQuestion();
+        setIsAnswering(false);
       }, 1500);
     }
+  };
+
+  const saveQuizResult = (name: string, score: number, completed: boolean) => {
+    const now = new Date();
+    const elapsedSeconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
+    const minutes = Math.floor(elapsedSeconds / 60);
+    const seconds = elapsedSeconds % 60;
+    const timeTaken = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+    const playerRecord = {
+      name,
+      score,
+      totalQuestions: QUIZ_QUESTIONS.length,
+      timeTaken,
+      date: now.toISOString().split('T')[0]
+    };
+
+    PlayerStorage.savePlayerResult(playerRecord);
   };
 
   const checkAnswer = (question: QuizQuestion, answer: any): boolean => {
@@ -179,9 +208,7 @@ const QuizPage = () => {
     setIsTimerActive(true);
   };
 
-  const finishQuiz = () => { /* ... */ };
   const navigateToStart = () => { window.location.href = '/'; };
-  const resetQuiz = () => { /* ... */ };
 
   // Guard until the question set is ready
   if (questionSet.length === 0) {
@@ -208,7 +235,7 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#BFDCDE] via-[#E5F1F2] to-[#BFDCDE] p-4">
+    <div className="min-h-screen bg-white">
       {quizState.showWinnerAnimation && (
         <WinnerAnimation
           playerName={playerName}
@@ -225,14 +252,22 @@ const QuizPage = () => {
           isLastQuestion={isLastQuestion}
         />
 
-        <QuizTimer
-          timeLeft={quizState.timeLeft}
-          totalTime={TOTAL_TIME_PER_QUESTION}
-        />
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 pb-12">
+        {/* Score and Time Info */}
+        <div className="mb-8 flex justify-center gap-8 flex-wrap">
+          <div className="bg-white border-2 border-[#007179] rounded-lg px-6 py-3 text-center">
+            <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">Punkte</p>
+            <p className="text-2xl font-bold text-[#007179]">{quizState.score}</p>
+          </div>
+          <div className="bg-white border-2 border-[#007179] rounded-lg px-6 py-3 text-center">
+            <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">Zeit verbleibend</p>
+            <p className="text-2xl font-bold text-[#007179]">{quizState.timeLeft}s</p>
+          </div>
+        </div>
 
         {/* Question Card */}
-        <div className="backdrop-blur-xl bg-[#BFDCDE]/90 border border-[#007179]/40 rounded-2xl shadow-xl p-8 overflow-hidden group">
-
+        <div className="bg-white border-2 border-[#007179] rounded-2xl shadow-lg p-8 mb-8">
           <QuestionRenderer
             question={currentQuestion}
             onAnswer={handleAnswer}
@@ -241,8 +276,10 @@ const QuizPage = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-8">
-          <div className="backdrop-blur-md bg-[#007179]/20 border border-[#007179]/30 inline-block px-6 py-2.5 rounded-full">
+        <div className="text-center">
+          <div className="inline-block px-6 py-2.5 rounded-full" style={{
+            backgroundColor: '#00717922'
+          }}>
             <p className="text-sm font-medium text-[#00383C]">
               © Made by innovAIte
             </p>

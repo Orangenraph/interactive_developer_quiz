@@ -17,32 +17,47 @@ const QuizHeader: React.FC<QuizHeaderProps> = ({
   isLastQuestion
 }) => {
   return (
-    <div className="backdrop-blur-xl bg-gradient-to-br from-[#BFDCDE]/90 to-[#E5F1F2]/80 border border-[#007179]/40 rounded-2xl shadow-xl p-6 mb-6 overflow-hidden group transition-all duration-500">
-      <div className="relative z-10 flex justify-between items-center mb-4">
-        <div>
-          <h1 className={`text-2xl font-bold transition-all duration-500 ${
-            isLastQuestion
-              ? 'text-[#00383C]'
-              : 'text-[#00383C]'
-          }`}>
-            {isLastQuestion ? '🏆 GOATED RAIFFEISEN QUESTION 🏆' : 'Raiffeisen Developer Quiz'}
-          </h1>
-          {isLastQuestion && (
-            <p className="text-sm font-semibold text-gray-600 mt-1">
-              Wenn du die Frage richtig beantwortest gehörst du zu den Besten!!!
-            </p>
-          )}
+    <div className="w-full text-white py-12 mb-12" style={{
+      background: '#007179',
+      borderBottomLeftRadius: '120px'
+    }}>
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Back Button */}
+        <div className="mb-6">
+          <a href="/" className="inline-flex items-center gap-2 text-white hover:text-[#B0DDDF] transition-colors">
+            <span className="text-xl">←</span>
+            <span>Zurück</span>
+          </a>
         </div>
-        <div className="bg-[#007179]/20 backdrop-blur-md border border-[#007179]/30 rounded-2xl p-4">
-          <p className="text-xs font-semibold text-[#00383C] uppercase tracking-wider">Spieler</p>
-          <p className="font-bold text-lg text-[#007179]">{playerName}</p>
-        </div>
-      </div>
 
-      <QuizProgressBar
-        currentQuestion={currentQuestion}
-        totalQuestions={totalQuestions}
-      />
+        {/* Title and Player */}
+        <div className="flex justify-between items-start flex-wrap gap-4 mb-6">
+          <div>
+            <h1 className={`text-3xl font-bold mb-2 transition-all duration-500 ${
+              isLastQuestion
+                ? 'text-white'
+                : 'text-white'
+            }`}>
+              {isLastQuestion ? '🏆 GOATED RAIFFEISEN QUESTION 🏆' : 'Raiffeisen Developer Quiz'}
+            </h1>
+            {isLastQuestion && (
+              <p className="text-sm font-semibold text-[#B0DDDF] mt-1">
+                Wenn du die Frage richtig beantwortest gehörst du zu den Besten!!!
+              </p>
+            )}
+          </div>
+          <div className="text-right">
+            <p className="text-sm text-[#B0DDDF] mb-1">Spieler</p>
+            <p className="text-xl font-semibold text-white">{playerName}</p>
+          </div>
+        </div>
+
+        {/* Progress Bar */}
+        <QuizProgressBar
+          currentQuestion={currentQuestion}
+          totalQuestions={totalQuestions}
+        />
+      </div>
     </div>
   );
 };
