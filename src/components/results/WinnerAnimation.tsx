@@ -85,7 +85,7 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
         {[...Array(80)].map((_, i) => (
           <div
             key={i}
-            className="absolute text-6xl"
+            className="absolute text-[clamp(2rem,4vw,3.75rem)]"
             style={{
               left: `${Math.random() * 100}%`,
               top: `-30px`,
@@ -112,7 +112,7 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
               animationIterationCount: 'infinite',
             }}
           >
-            <Star className="w-16 h-16 text-yellow-300" style={{
+            <Star className="w-[clamp(2rem,4vw,4rem)] h-[clamp(2rem,4vw,4rem)] text-yellow-300" style={{
               filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
             }} />
           </div>
@@ -144,17 +144,17 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
       </div>
 
       {/* Main Content - ULTIMATE TRIUMPH */}
-      <div className="relative text-center text-white z-10 flex flex-col items-center justify-center h-full">
+      <div className="relative text-center text-white z-10 flex flex-col items-center justify-center h-full px-[2vw]">
         {/* Glowing Crown Animation */}
-        <div style={{ animation: `crownGlow 2.5s ease-in-out infinite`, marginBottom: '20px' }}>
-          <Crown className="w-40 h-40 text-yellow-300 mx-auto" style={{
+        <div style={{ animation: `crownGlow 2.5s ease-in-out infinite`, marginBottom: '1vh' }}>
+          <Crown className="w-[clamp(6rem,10vw,10rem)] h-[clamp(6rem,10vw,10rem)] text-yellow-300 mx-auto" style={{
             filter: 'drop-shadow(0 0 40px rgba(255, 215, 0, 1))',
             animation: `victoryFlash 0.8s ease-in-out infinite`,
           }} />
         </div>
 
         {/* Victory Subtitle */}
-        <h2 className="text-6xl font-black text-yellow-300 mb-12" style={{
+        <h2 className="text-[clamp(1.5rem,4vw,3rem)] font-black text-yellow-300 mb-[3vh]" style={{
           textShadow: '0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 165, 0, 1)',
           letterSpacing: '0.08em',
           animation: `victoryFlash 1s ease-in-out infinite`,
@@ -163,9 +163,9 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
         </h2>
 
         {/* HappyGoat Image Container - EXTREME */}
-        <div className="mb-12 relative">
+        <div className="mb-[3vh] relative">
           <div
-            className="w-96 h-[500px] bg-gradient-to-b from-yellow-300 via-orange-300 to-pink-300 rounded-2xl shadow-2xl overflow-hidden border-8 border-yellow-200 relative"
+            className="w-[clamp(14rem,22vw,20rem)] h-[clamp(17rem,28vh,25rem)] bg-gradient-to-b from-yellow-300 via-orange-300 to-pink-300 rounded-2xl shadow-2xl overflow-hidden border-8 border-yellow-200 relative"
             style={{
               animation: 'triumphBounce 1.2s ease-in-out infinite',
               boxShadow: '0 0 50px rgba(255, 215, 0, 1), inset 0 0 50px rgba(255, 255, 100, 0.4)',
@@ -189,7 +189,7 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute text-5xl"
+              className="absolute text-[clamp(2rem,4vw,3rem)]"
               style={{
                 left: `${Math.cos((i / 12) * Math.PI * 2) * 200}px`,
                 top: `${Math.sin((i / 12) * Math.PI * 2) * 200}px`,
@@ -203,21 +203,21 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
           ))}
 
           {/* Corner Sparkles */}
-          <Sparkles className="absolute -top-10 -right-10 w-20 h-20 text-yellow-300 animate-pulse" style={{
+          <Sparkles className="absolute -top-[2vh] -right-[2vw] w-[clamp(3rem,5vw,5rem)] h-[clamp(3rem,5vw,5rem)] text-yellow-300 animate-pulse" style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
             animation: 'victoryFlash 0.5s ease-in-out infinite',
           }} />
-          <Sparkles className="absolute -top-10 -left-10 w-20 h-20 text-yellow-300 animate-pulse" style={{
+          <Sparkles className="absolute -top-[2vh] -left-[2vw] w-[clamp(3rem,5vw,5rem)] h-[clamp(3rem,5vw,5rem)] text-yellow-300 animate-pulse" style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
             animation: 'victoryFlash 0.5s ease-in-out infinite',
             animationDelay: '0.2s',
           }} />
-          <Sparkles className="absolute -bottom-10 -right-10 w-20 h-20 text-yellow-300 animate-pulse" style={{
+          <Sparkles className="absolute -bottom-[2vh] -right-[2vw] w-[clamp(3rem,5vw,5rem)] h-[clamp(3rem,5vw,5rem)] text-yellow-300 animate-pulse" style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
             animation: 'victoryFlash 0.5s ease-in-out infinite',
             animationDelay: '0.4s',
           }} />
-          <Sparkles className="absolute -bottom-10 -left-10 w-20 h-20 text-yellow-300 animate-pulse" style={{
+          <Sparkles className="absolute -bottom-[2vh] -left-[2vw] w-[clamp(3rem,5vw,5rem)] h-[clamp(3rem,5vw,5rem)] text-yellow-300 animate-pulse" style={{
             filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 1))',
             animation: 'victoryFlash 0.5s ease-in-out infinite',
             animationDelay: '0.6s',
@@ -226,18 +226,18 @@ export const WinnerAnimation = ({ playerName, onBackToStart }: WinnerAnimationPr
 
 
         {/* Icon Explosion */}
-        <div className="flex justify-center gap-6 mb-2 flex-wrap">
-          <Trophy className="w-16 h-16 text-yellow-300 animate-spin" style={{ animationDuration: '1.5s', filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 1))' }} />
-          <Star className="w-16 h-16 text-white animate-bounce" style={{ animationDelay: '0.2s', filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 1))' }} />
-          <Heart className="w-16 h-16 text-pink-300 animate-pulse" style={{ animationDelay: '0.4s', filter: 'drop-shadow(0 0 15px rgba(255, 105, 180, 1))' }} />
-          <Sparkles className="w-16 h-16 text-yellow-200 animate-spin" style={{ animationDelay: '0.6s', animationDuration: '2s', filter: 'drop-shadow(0 0 15px rgba(255, 255, 100, 1))' }} />
-          <Crown className="w-16 h-16 text-yellow-300 animate-bounce" style={{ animationDelay: '0.8s', filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 1))' }} />
+        <div className="flex justify-center gap-[2vw] mb-[1vh] flex-wrap">
+          <Trophy className="w-[clamp(2.5rem,4vw,4rem)] h-[clamp(2.5rem,4vw,4rem)] text-yellow-300 animate-spin" style={{ animationDuration: '1.5s', filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 1))' }} />
+          <Star className="w-[clamp(2.5rem,4vw,4rem)] h-[clamp(2.5rem,4vw,4rem)] text-white animate-bounce" style={{ animationDelay: '0.2s', filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 1))' }} />
+          <Heart className="w-[clamp(2.5rem,4vw,4rem)] h-[clamp(2.5rem,4vw,4rem)] text-pink-300 animate-pulse" style={{ animationDelay: '0.4s', filter: 'drop-shadow(0 0 15px rgba(255, 105, 180, 1))' }} />
+          <Sparkles className="w-[clamp(2.5rem,4vw,4rem)] h-[clamp(2.5rem,4vw,4rem)] text-yellow-200 animate-spin" style={{ animationDelay: '0.6s', animationDuration: '2s', filter: 'drop-shadow(0 0 15px rgba(255, 255, 100, 1))' }} />
+          <Crown className="w-[clamp(2.5rem,4vw,4rem)] h-[clamp(2.5rem,4vw,4rem)] text-yellow-300 animate-bounce" style={{ animationDelay: '0.8s', filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 1))' }} />
         </div>
 
         {/* ULTIMATE Button */}
         <button
           onClick={onBackToStart}
-          className=" bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 text-red-600 py-6 px-16 rounded-full font-black text-2xl border-6 border-red-500 shadow-2xl transform hover:scale-125 transition-all"
+          className="bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 text-red-600 py-[2vh] px-[4vw] rounded-full font-black text-[clamp(0.875rem,1.5vw,1.25rem)] border-6 border-red-500 shadow-2xl transform hover:scale-125 transition-all"
           style={{
             textShadow: '0 0 10px rgba(255, 215, 0, 0.8)',
             boxShadow: '0 0 40px rgba(255, 215, 0, 1), inset 0 0 20px rgba(255, 255, 255, 0.6)',

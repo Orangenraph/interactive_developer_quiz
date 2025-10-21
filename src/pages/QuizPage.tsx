@@ -213,7 +213,7 @@ const QuizPage = () => {
   // Guard until the question set is ready
   if (questionSet.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-[#00383C]">
+      <div className="min-h-screen flex items-center justify-center text-[#00383C] text-[clamp(1rem,1.5vw,1.25rem)]">
         Loading questions...
       </div>
     );
@@ -252,23 +252,23 @@ const QuizPage = () => {
           isLastQuestion={isLastQuestion}
         />
       </div>
-      
+
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 pb-12">
+      <div className="max-w-6xl mx-auto px-[2vw] pb-[4vh] pt-[3vh]">
         {/* Score and Time Info */}
-        <div className="mb-8 flex justify-center gap-8 flex-wrap">
-          <div className="bg-white border-2 border-[#007179] rounded-lg px-6 py-3 text-center">
-            <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">Punkte</p>
-            <p className="text-2xl font-bold text-[#007179]">{quizState.score}</p>
+        <div className="mb-[3vh] flex justify-center gap-[3vw] flex-wrap">
+          <div className="bg-white border-2 border-[#007179] rounded-lg px-[2vw] py-[1.5vh] text-center">
+            <p className="text-[clamp(0.625rem,0.8vw,0.75rem)] text-gray-600 uppercase tracking-wide font-semibold mb-[0.5vh]">Punkte</p>
+            <p className="text-[clamp(1.25rem,2vw,1.5rem)] font-bold text-[#007179]">{quizState.score}</p>
           </div>
-          <div className="bg-white border-2 border-[#007179] rounded-lg px-6 py-3 text-center">
-            <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">Zeit verbleibend</p>
-            <p className="text-2xl font-bold text-[#007179]">{quizState.timeLeft}s</p>
+          <div className="bg-white border-2 border-[#007179] rounded-lg px-[2vw] py-[1.5vh] text-center">
+            <p className="text-[clamp(0.625rem,0.8vw,0.75rem)] text-gray-600 uppercase tracking-wide font-semibold mb-[0.5vh]">Zeit verbleibend</p>
+            <p className="text-[clamp(1.25rem,2vw,1.5rem)] font-bold text-[#007179]">{quizState.timeLeft}s</p>
           </div>
         </div>
 
         {/* Question Card */}
-        <div className="bg-white border-2 border-[#007179] rounded-2xl shadow-lg p-8 mb-8">
+        <div className="bg-white border-2 border-[#007179] rounded-2xl shadow-lg p-[3vh] mb-[3vh]">
           <QuestionRenderer
             question={currentQuestion}
             onAnswer={handleAnswer}
@@ -278,10 +278,10 @@ const QuizPage = () => {
 
         {/* Footer */}
         <div className="text-center">
-          <div className="inline-block px-6 py-2.5 rounded-full" style={{
+          <div className="inline-block px-[2vw] py-[1vh] rounded-full" style={{
             backgroundColor: '#00717922'
           }}>
-            <p className="text-sm font-medium text-[#00383C]">
+            <p className="text-[clamp(0.75rem,1vw,0.875rem)] font-medium text-[#00383C]">
               © Made by innovAIte
             </p>
           </div>

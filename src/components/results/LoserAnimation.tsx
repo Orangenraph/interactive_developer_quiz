@@ -69,7 +69,7 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute text-6xl"
+            className="absolute text-[clamp(2rem,4vw,3.75rem)]"
             style={{
               left: `${Math.random() * 100}%`,
               top: `-20px`,
@@ -97,7 +97,7 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
               animationIterationCount: 'infinite',
             }}
           >
-            <div className="w-32 h-32 border-4 border-red-500 rounded-full opacity-50"></div>
+            <div className="w-[clamp(4rem,8vw,8rem)] h-[clamp(4rem,8vw,8rem)] border-4 border-red-500 rounded-full opacity-50"></div>
           </div>
         ))}
       </div>
@@ -107,7 +107,7 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
         {[...Array(8)].map((_, i) => (
           <Skull
             key={i}
-            className="absolute w-24 h-24 text-red-600 opacity-30"
+            className="absolute w-[clamp(3rem,6vw,6rem)] h-[clamp(3rem,6vw,6rem)] text-red-600 opacity-30"
             style={{
               left: `${20 + i * 12}%`,
               top: `${5 + (i % 3) * 30}%`,
@@ -121,10 +121,10 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
       </div>
 
       {/* Main Content - ABSOLUTE CHAOS */}
-      <div className="relative text-center text-white z-10 flex flex-col items-center justify-center h-full">
+      <div className="relative text-center text-white z-10 flex flex-col items-center justify-center h-full px-[2vw]">
         {/* CATASTROPHIC TITLE */}
         <h1
-          className="text-9xl font-black mb-2 drop-shadow-2xl"
+          className="text-[clamp(2.5rem,7vw,6rem)] font-black mb-[1vh] drop-shadow-2xl"
           style={{
             textShadow: '0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(220, 20, 60, 1), 0 0 90px rgba(139, 0, 0, 1)',
             color: '#ffffff',
@@ -138,7 +138,7 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
         </h1>
 
         {/* Disaster Text */}
-        <h2 className="text-5xl font-black text-red-300 mb-12" style={{
+        <h2 className="text-[clamp(1.5rem,4vw,3rem)] font-black text-red-300 mb-[4vh]" style={{
           textShadow: '0 0 20px rgba(255, 0, 0, 0.8)',
           letterSpacing: '0.05em',
         }}>
@@ -146,9 +146,9 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
         </h2>
 
         {/* Goat Image Container - EXTREME */}
-        <div className="mb-12 relative">
+        <div className="mb-[4vh] relative">
           <div
-            className="w-96 h-[500px] bg-gradient-to-b from-red-600 via-red-700 to-black rounded-lg shadow-2xl overflow-hidden border-8 border-red-300 relative"
+            className="w-[clamp(16rem,25vw,24rem)] h-[clamp(20rem,32vh,31rem)] bg-gradient-to-b from-red-600 via-red-700 to-black rounded-lg shadow-2xl overflow-hidden border-8 border-red-300 relative"
             style={{
               animation: 'goofyBounceExtreme 1s ease-in-out infinite',
               boxShadow: '0 0 40px rgba(255, 0, 0, 0.9), inset 0 0 40px rgba(255, 0, 0, 0.5)',
@@ -172,7 +172,7 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="absolute text-5xl animate-pulse"
+              className="absolute text-[clamp(2rem,4vw,3rem)] animate-pulse"
               style={{
                 left: `${Math.random() * 100 - 50}px`,
                 top: `${Math.random() * 100 - 50}px`,
@@ -186,11 +186,11 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
           ))}
 
           {/* Corner Explosions */}
-          <Zap className="absolute -top-8 -right-8 w-16 h-16 text-yellow-300 animate-pulse" style={{
+          <Zap className="absolute -top-[2vh] -right-[2vw] w-[clamp(2rem,4vw,4rem)] h-[clamp(2rem,4vw,4rem)] text-yellow-300 animate-pulse" style={{
             filter: 'drop-shadow(0 0 15px #FFD700)',
             animation: 'glitchFlash 0.15s ease-in-out infinite',
           }} />
-          <Zap className="absolute -top-8 -left-8 w-16 h-16 text-yellow-300 animate-pulse" style={{
+          <Zap className="absolute -top-[2vh] -left-[2vw] w-[clamp(2rem,4vw,4rem)] h-[clamp(2rem,4vw,4rem)] text-yellow-300 animate-pulse" style={{
             filter: 'drop-shadow(0 0 15px #FFD700)',
             animation: 'glitchFlash 0.15s ease-in-out infinite',
             animationDelay: '0.1s',
@@ -198,18 +198,18 @@ export const LoserAnimation = ({ playerName, onBackToStart }: LoserAnimationProp
         </div>
 
         {/* Disaster Messages */}
-        <div className="mb-4 text-2xl font-black text-red-200 text-center" style={{
+        <div className="mb-[2vh] text-[clamp(1rem,2vw,1.5rem)] font-black text-red-200 text-center" style={{
           textShadow: '0 0 10px rgba(255, 0, 0, 0.8)',
           animation: 'glitchFlash 0.3s ease-in-out infinite',
         }}>
           <p>🔥 {playerName} IST VERNICHTET! 🔥</p>
-          <p className="text-lg mt-2">😂 BEI RAIFFEISEN ZÄHLT PRÄZISION 😂</p>
+          <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] mt-[1vh]">😂 BEI RAIFFEISEN ZÄHLT PRÄZISION 😂</p>
         </div>
 
         {/* EXTREME Button */}
         <button
           onClick={onBackToStart}
-          className="bg-gradient-to-r from-red-600 via-red-500 to-red-700 text-white py-6 px-16 rounded-full font-black text-2xl border-6 border-yellow-300 shadow-2xl transform hover:scale-125 transition-all"
+          className="bg-gradient-to-r from-red-600 via-red-500 to-red-700 text-white py-[2.5vh] px-[5vw] rounded-full font-black text-[clamp(1rem,1.8vw,1.5rem)] border-6 border-yellow-300 shadow-2xl transform hover:scale-125 transition-all"
           style={{
             textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
             boxShadow: '0 0 30px rgba(255, 0, 0, 1), inset 0 0 15px rgba(255, 255, 0, 0.5)',

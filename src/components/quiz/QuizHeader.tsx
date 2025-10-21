@@ -17,23 +17,15 @@ const QuizHeader: React.FC<QuizHeaderProps> = ({
   isLastQuestion
 }) => {
   return (
-    <div className="w-full text-white py-12 mb-12" style={{
+    <div className="w-full text-white py-[4vh]" style={{
       background: '#007179',
-      borderBottomLeftRadius: '120px'
+      borderBottomLeftRadius: '8vw'
     }}>
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Back Button */}
-        <div className="mb-6">
-          <a href="/" className="inline-flex items-center gap-2 text-white hover:text-[#B0DDDF] transition-colors">
-            <span className="text-xl">←</span>
-            <span>Zurück</span>
-          </a>
-        </div>
-
+      <div className="max-w-6xl mx-auto px-[2vw]">
         {/* Title and Player */}
-        <div className="flex justify-between items-start flex-wrap gap-4 mb-6">
+        <div className="flex justify-between items-start flex-wrap gap-[2vw] mb-[3vh]">
           <div>
-            <h1 className={`text-3xl font-bold mb-2 transition-all duration-500 ${
+            <h1 className={`text-[clamp(1.5rem,2.5vw,2rem)] font-bold mb-[1vh] transition-all duration-500 ${
               isLastQuestion
                 ? 'text-white'
                 : 'text-white'
@@ -41,14 +33,14 @@ const QuizHeader: React.FC<QuizHeaderProps> = ({
               {isLastQuestion ? '🏆 GOATED RAIFFEISEN QUESTION 🏆' : 'Raiffeisen Developer Quiz'}
             </h1>
             {isLastQuestion && (
-              <p className="text-sm font-semibold text-[#B0DDDF] mt-1">
+              <p className="text-[clamp(0.75rem,1vw,0.875rem)] font-semibold text-[#B0DDDF] mt-[0.5vh]">
                 Wenn du die Frage richtig beantwortest gehörst du zu den Besten!!!
               </p>
             )}
           </div>
           <div className="text-right">
-            <p className="text-sm text-[#B0DDDF] mb-1">Spieler</p>
-            <p className="text-xl font-semibold text-white">{playerName}</p>
+            <p className="text-[clamp(0.75rem,1vw,0.875rem)] text-[#B0DDDF] mb-[0.5vh]">Spieler</p>
+            <p className="text-[clamp(1.125rem,1.5vw,1.25rem)] font-semibold text-white">{playerName}</p>
           </div>
         </div>
 
