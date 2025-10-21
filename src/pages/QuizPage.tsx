@@ -39,6 +39,57 @@ const QuizPage = () => {
   const [isTimerActive, setIsTimerActive] = useState(true);
   const [isAnswering, setIsAnswering] = useState(false);
 
+  // NEW: the chosen 10 questions for this run (3 easy, 3 medium, 3 hard, 1 goated)
+  const [questionSet, setQuestionSet] = useState<QuizQuestion[]>([]);
+
+  // Pick questions at game start with required difficulty order
+  useEffect(() => {
+    const selected = buildQuestionSet(QUIZ_QUESTIONS);
+    setQuestionSet(selected);
+  }, []);
+
+  // Helper: build the 10-question set with fixed order by difficulty
+  const buildQuestionSet = (pool: QuizQuestion[]): QuizQuestion[] => {
+    const byDiff = {
+      easy: pool.filter(q => q.difficulty === 'easy'),
+      medium: pool.filter(q => q.difficulty === 'medium'),
+      hard: pool.filter(q => q.difficulty === 'hard'),
+      goated: pool.filter(q => q.difficulty === 'goated'),
+    };
+
+    const pick = <T,>(arr: T[], n: number): T[] => {
+      const copy = [...arr];
+      shuffleInPlace(copy);
+      return copy.slice(0, Math.min(n, copy.length));
+    };
+
+    const need = { easy: 3, medium: 3, hard: 3, goated: 1 };
+
+    const chosenEasy = pick(byDiff.easy, need.easy);
+    const chosenMedium = pick(byDiff.medium, need.medium);
+    const chosenHard = pick(byDiff.hard, need.hard);
+    const chosenGoated = pick(byDiff.goated, need.goated);
+
+    let set = [...chosenEasy, ...chosenMedium, ...chosenHard, ...chosenGoated];
+
+    // Fallback: top up if the pool is short (keeps the order segments intact)
+    if (set.length < 10) {
+      const already = new Set(set.map(q => q));
+      const remaining = pool.filter(q => !already.has(q));
+      shuffleInPlace(remaining);
+      set = [...set, ...remaining.slice(0, 10 - set.length)];
+    }
+
+    return set.slice(0, 10);
+  };
+
+  const shuffleInPlace = <T,>(arr: T[]): void => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  };
+
   useEffect(() => {
     if (isTimerActive && quizState.timeLeft > 0 && !quizState.isComplete) {
       timerRef.current = setTimeout(() => {
@@ -69,7 +120,8 @@ const QuizPage = () => {
     setIsTimerActive(false);
     setIsAnswering(true);
 
-    const currentQuestion = QUIZ_QUESTIONS[quizState.currentQuestionIndex];
+    // USE questionSet instead of whole pool
+    const currentQuestion = questionSet[quizState.currentQuestionIndex];
     const isCorrect = checkAnswer(currentQuestion, answer);
 
     const newAnswers = [...quizState.answers, answer];
@@ -94,8 +146,9 @@ const QuizPage = () => {
       return;
     }
 
-    if (quizState.currentQuestionIndex === QUIZ_QUESTIONS.length - 1 && isCorrect) {
-      // Player completed all questions - save result and show winner animation
+
+    if (quizState.currentQuestionIndex === questionSet.length - 1 && isCorrect) {
+
       setTimeout(() => {
         saveQuizResult(playerName, newScore, true);
         setQuizState(prev => ({
@@ -157,15 +210,24 @@ const QuizPage = () => {
 
   const navigateToStart = () => { window.location.href = '/'; };
 
-  const currentQuestion = QUIZ_QUESTIONS[quizState.currentQuestionIndex];
-  const isLastQuestion = quizState.currentQuestionIndex === QUIZ_QUESTIONS.length - 1;
+  // Guard until the question set is ready
+  if (questionSet.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-[#00383C]">
+        Loading questions...
+      </div>
+    );
+  }
+
+  const currentQuestion = questionSet[quizState.currentQuestionIndex];
+  const isLastQuestion = quizState.currentQuestionIndex === questionSet.length - 1;
 
   if (quizState.isComplete && !quizState.showWinnerAnimation) {
     return (
       <ResultPage
         playerName={playerName}
         score={quizState.score}
-        totalQuestions={QUIZ_QUESTIONS.length}
+        totalQuestions={questionSet.length}
         onBackToStart={navigateToStart}
         lastQuestionCorrect={quizState.lastQuestionCorrect}
       />
@@ -181,13 +243,14 @@ const QuizPage = () => {
         />
       )}
 
-      {/* Quiz Header with Progress Bar */}
-      <QuizHeader
-        playerName={playerName}
-        currentQuestion={quizState.currentQuestionIndex + 1}
-        totalQuestions={QUIZ_QUESTIONS.length}
-        isLastQuestion={isLastQuestion}
-      />
+      <div className="max-w-4xl mx-auto">
+        {/* QuizHeader mit isLastQuestion und ProgressBar */}
+        <QuizHeader
+          playerName={playerName}
+          currentQuestion={quizState.currentQuestionIndex + 1}
+          totalQuestions={questionSet.length}
+          isLastQuestion={isLastQuestion}
+        />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 pb-12">
