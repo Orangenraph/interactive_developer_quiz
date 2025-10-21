@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Trophy } from 'lucide-react';
-import { QUIZ_QUESTIONS, QuizQuestion } from '../data/questions';
+import { QUIZ_QUESTIONS, QuizQuestion } from '../data/index';
 import { QuestionRenderer } from '../components/questions/QuestionRenderer';
 import { WinnerAnimation } from '../components/results/WinnerAnimation';
 import ResultPage from './ResultPage';
