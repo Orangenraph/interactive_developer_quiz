@@ -1,5 +1,3 @@
-// src/pages/QuizPage.tsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Trophy } from 'lucide-react';
 import { QUIZ_QUESTIONS, QuizQuestion } from '../data/index';
@@ -136,8 +134,8 @@ const QuizPage = () => {
 
     if (!isCorrect) {
       // Player failed - save result and complete quiz
-      setTimeout(() => {
-        saveQuizResult(playerName, newScore, false);
+      setTimeout(async () => {
+        await saveQuizResult(playerName, newScore, false);
         setQuizState(prev => ({
           ...prev,
           isComplete: true
@@ -146,11 +144,9 @@ const QuizPage = () => {
       return;
     }
 
-
     if (quizState.currentQuestionIndex === questionSet.length - 1 && isCorrect) {
-
-      setTimeout(() => {
-        saveQuizResult(playerName, newScore, true);
+      setTimeout(async () => {
+        await saveQuizResult(playerName, newScore, true);
         setQuizState(prev => ({
           ...prev,
           showWinnerAnimation: true,
@@ -166,7 +162,7 @@ const QuizPage = () => {
     }
   };
 
-  const saveQuizResult = (name: string, score: number, completed: boolean) => {
+  const saveQuizResult = async (name: string, score: number, completed: boolean) => {
     const now = new Date();
     const elapsedSeconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
     const minutes = Math.floor(elapsedSeconds / 60);
@@ -176,12 +172,17 @@ const QuizPage = () => {
     const playerRecord = {
       name,
       score,
-      totalQuestions: QUIZ_QUESTIONS.length,
       timeTaken,
-      date: now.toISOString().split('T')[0]
+      date: now.toISOString().split('T')[0],
+      completed,
     };
 
-    PlayerStorage.savePlayerResult(playerRecord);
+    try {
+      await PlayerStorage.savePlayerResult(playerRecord);
+      console.log('Ergebnis erfolgreich gespeichert');
+    } catch (error) {
+      console.error('Fehler beim Speichern des Ergebnisses:', error);
+    }
   };
 
   const checkAnswer = (question: QuizQuestion, answer: any): boolean => {

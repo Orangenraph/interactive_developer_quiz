@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, Trophy } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import PixelBlast from '../utils/PixelBlast';
-import DevGoat_Sticker from '../assets/DevGoat_Sticker.png';
+import DevGoat_Sticker from '../assets/DevGoat_Sticker.png'
 
 const StartPage = () => {
   const [name, setName] = useState('');

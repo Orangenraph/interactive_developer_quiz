@@ -1,12 +1,10 @@
-// src/pages/LeaderboardPage.tsx
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Download, Trash2 } from 'lucide-react';
 import LeaderboardCard from '../components/leaderboard/LeaderboardCard';
 import LeaderboardHeader from '../components/leaderboard/LeaderboardHeader';
 import BackButton from '../components/leaderboard/BackButton';
-import { PlayerStorage, LeaderboardEntry } from '../services/PlayerStorage';
+import { PlayerStorage, type LeaderboardEntry } from '../services/PlayerStorage';
 
 const LeaderboardPage = () => {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
@@ -18,53 +16,44 @@ const LeaderboardPage = () => {
     loadLeaderboard();
   }, []);
 
-  const loadLeaderboard = () => {
+  const loadLeaderboard = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      const leaderboard = PlayerStorage.getLeaderboard();
+    try {
+      const leaderboard = await PlayerStorage.getLeaderboard();
       setEntries(leaderboard);
+    } catch (error) {
+      console.error('Fehler beim Laden des Leaderboards:', error);
+      setMessage('Fehler beim Laden des Leaderboards');
+      setTimeout(() => setMessage(''), 3000);
+    } finally {
       setIsLoading(false);
-    }, 300);
-  };
-
-  const handleDownloadCSV = () => {
-    const allResults = PlayerStorage.loadAllResults();
-
-    if (allResults.length === 0) {
-      setMessage('Keine Ergebnisse zum Herunterladen');
-      setTimeout(() => setMessage(''), 3000);
-      return;
     }
-
-    const headers = ['Name', 'Score', 'Zeit', 'Datum'];
-    const rows = allResults.map(r => [
-      `"${r.name.replace(/"/g, '""')}"`,
-      r.score,
-      r.timeTaken,
-      r.date
-    ]);
-
-    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
-
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `quiz_results_${new Date().toISOString().split('T')[0]}.csv`;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    setMessage('CSV erfolgreich heruntergeladen!');
-    setTimeout(() => setMessage(''), 3000);
   };
 
-  const handleClearResults = () => {
-    if (window.confirm('Möchtest du wirklich alle Ergebnisse löschen?')) {
-      PlayerStorage.clearAllResults();
-      setEntries([]);
-      setMessage('Alle Ergebnisse gelöscht');
+  const handleDownloadCSV = async () => {
+    try {
+      await PlayerStorage.downloadLeaderboard();
+      setMessage('CSV erfolgreich heruntergeladen!');
       setTimeout(() => setMessage(''), 3000);
+    } catch (error) {
+      console.error('Fehler beim Download:', error);
+      setMessage('Fehler beim Download der CSV');
+      setTimeout(() => setMessage(''), 3000);
+    }
+  };
+
+  const handleClearResults = async () => {
+    if (window.confirm('Möchtest du wirklich alle Ergebnisse löschen?')) {
+      try {
+        await PlayerStorage.clearAllResults();
+        setEntries([]);
+        setMessage('Alle Ergebnisse gelöscht');
+        setTimeout(() => setMessage(''), 3000);
+      } catch (error) {
+        console.error('Fehler beim Löschen:', error);
+        setMessage('Fehler beim Löschen der Ergebnisse');
+        setTimeout(() => setMessage(''), 3000);
+      }
     }
   };
 
@@ -125,7 +114,13 @@ const LeaderboardPage = () => {
           </div>
         ) : entries.length > 0 ? (
           <>
-            <LeaderboardCard entries={entries} />
+            <LeaderboardCard entries={entries.map((entry, index) => ({
+              rank: index + 1,
+              name: entry.name,
+              score: entry.score.toString(),
+              timeTaken: entry.timeTaken,
+              date: entry.date
+            }))} />
             <div className="mt-8 text-center text-sm text-gray-600 border-t border-gray-200 pt-6">
               <p>{entries.length} Entwickler in der Liste</p>
             </div>
