@@ -1,0 +1,1515 @@
+               // src/data/questions/AllQuestions.txt
+  {
+    id: 1,
+    type: "mc",
+    question: "Wer ist der Schöpfer von Python?",
+    options: ["Bjarne Stroustrup", "James Gosling", "Guido van Rossum", "Rasmus Lerdorf"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 2,
+    type: "mc",
+    question: "Wofür steht die Abkürzung 'HTML'?",
+    options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyper Transfer Markup Language"],
+    correct: 0,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 3,
+    type: "mc",
+    question: "Wer ist als 'Vater von Java' bekannt?",
+    options: ["Dennis Ritchie", "Bjarne Stroustrup", "Guido van Rossum", "James Gosling"],
+    correct: 3,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 4,
+    type: "mc",
+    question: "Wer hat die Programmiersprache C entwickelt?",
+    options: ["Bjarne Stroustrup", "Dennis Ritchie", "James Gosling", "Ken Thompson"],
+    correct: 1,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 5,
+    type: "mc",
+    question: "Was war die primäre Motivation für die Entwicklung von JavaScript?",
+    options: ["Clientseitige Interaktion in Webbrowsern.", "Schreiben von Betriebssystemen.", "Entwicklung von Serveranwendungen.", "Erstellung von Datenbanken."],
+    correct: 0,
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  // Bestehende Fragen, IDs angepasst
+  {
+    id: 6,
+    type: "mc",
+    question: "Welches SQL-Schlüsselwort wird verwendet, um Daten aus einer Datenbank abzurufen?",
+    options: ["SELECT", "GET", "FETCH", "EXTRACT"],
+    correct: 0,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 7,
+    type: "truefalse",
+    question: "Python ist eine statisch typisierte Sprache.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 8,
+    type: "input",
+    question: "Wie nennt man die Hauptmethode in einem Java-Programm, die als Einstiegspunkt dient?",
+    correct: "main",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 9,
+    type: "mc",
+    question: "Welches Symbol wird in C verwendet, um die Adresse einer Variablen abzurufen?",
+    options: ["*", "&", "#", "$"],
+    correct: 1,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 10,
+    type: "truefalse",
+    question: "Ein Primärschlüssel in einer SQL-Tabelle darf NULL-Werte enthalten.",
+    correct: false,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 11,
+    type: "input",
+    question: "Wofür steht die Abkürzung 'JVM' im Kontext von Java?",
+    correct: "Java Virtual Machine",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 12,
+    type: "mc",
+    question: "Welcher Datentyp wird in Python für eine geordnete und veränderliche Sammlung von Elementen verwendet?",
+    options: ["Tuple", "List", "Set", "Dictionary"],
+    correct: 1,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 13,
+    type: "truefalse",
+    question: "COBOL ist eine der jüngsten Programmiersprachen.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 14,
+    type: "input",
+    question: "Welcher HTTP-Statuscode signalisiert einen 'Not Found' Fehler?",
+    correct: "404",
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 15,
+    type: "mc",
+    question: "Was gibt der `git status` Befehl aus?",
+    options: ["Den Commit-Verlauf", "Alle vorhandenen Branches", "Den Zustand des Arbeitsverzeichnisses und der Staging Area", "Die Konfigurationseinstellungen"],
+    correct: 2,
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  {
+    id: 16,
+    type: "truefalse",
+    question: "Der `==` Operator in Java vergleicht bei Objekten die Speicheradressen (Referenzen).",
+    correct: true,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 17,
+    type: "input",
+    question: "Wie lautet die Dateiendung für eine C-Header-Datei?",
+    correct: ".h",
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 18,
+    type: "mc",
+    question: "Aus wie vielen 'Divisions' besteht ein klassisches COBOL-Programm?",
+    options: ["2", "3", "4", "5"],
+    correct: 2,
+    timeLimit: 45,
+    difficulty: "easy"
+  },
+  {
+    id: 19,
+    type: "truefalse",
+    question: "Ein Compiler übersetzt den Quellcode Zeile für Zeile während der Ausführung.",
+    correct: false,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 20,
+    type: "input",
+    question: "Welches Schlüsselwort wird in Python verwendet, um eine Funktion zu definieren?",
+    correct: "def",
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 21,
+    type: "mc",
+    question: "Welche SQL-Klausel wird verwendet, um die Ergebnismenge zu sortieren?",
+    options: ["SORT BY", "ORDER BY", "GROUP BY", "ARRANGE BY"],
+    correct: 1,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 22,
+    type: "truefalse",
+    question: "Java unterstützt die mehrfache Vererbung von Klassen.",
+    correct: false,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 23,
+    type: "input",
+    question: "Wie heißt die Standard-Bibliotheksfunktion in C, um formatierten Text auf der Konsole auszugeben?",
+    correct: "printf",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 24,
+    type: "mc",
+    question: "Welches Zahlensystem wird von Computern intern primär verwendet?",
+    options: ["Dezimalsystem", "Hexadezimalsystem", "Binärsystem", "Oktalsystem"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 25,
+    type: "truefalse",
+    question: "HTML ist eine Programmiersprache.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 26,
+    type: "input",
+    question: "Wofür steht 'API'?",
+    correct: "Application Programming Interface",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 27,
+    type: "mc",
+    question: "Welches der folgenden ist kein gültiger Datentyp in Java?",
+    options: ["int", "char", "string", "boolean"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 28,
+    type: "truefalse",
+    question: "Der Index des ersten Elements in einem Python-Array (List) ist 1.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 29,
+    type: "input",
+    question: "Welches Zeichen beendet die meisten Anweisungen in COBOL?",
+    correct: ".",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 30,
+    type: "mc",
+    question: "Welcher Befehl wird in SQL verwendet, um eine Tabelle zu löschen?",
+    options: ["DELETE TABLE", "REMOVE TABLE", "DROP TABLE", "ERASE TABLE"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 31,
+    type: "truefalse",
+    question: "In C allokiert die Funktion `malloc()` Speicher auf dem Stack.",
+    correct: false,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 32,
+    type: "input",
+    question: "Welches Schlüsselwort wird in Java verwendet, um eine Konstante zu deklarieren?",
+    correct: "final",
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 33,
+    type: "mc",
+    question: "Was bedeutet 'OOP'?",
+    options: ["Object-Oriented Programming", "Open Office Protocol", "Original Object Plan", "Optimal Output Processing"],
+    correct: 0,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 34,
+    type: "truefalse",
+    question: "Ein `LEFT JOIN` in SQL gibt nur die Zeilen zurück, die in beiden Tabellen eine Übereinstimmung haben.",
+    correct: false,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 35,
+    type: "input",
+    question: "Welcher Befehl zeigt in der Kommandozeile den aktuellen Pfad an (unter Linux/macOS)?",
+    correct: "pwd",
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 36,
+    type: "mc",
+    question: "Welcher Operator wird in Python für die Potenzierung verwendet?",
+    options: ["^", "**", "pow()", "##"],
+    correct: 1,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 37,
+    type: "truefalse",
+    question: "Eine `while`-Schleife wird immer mindestens einmal ausgeführt.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 38,
+    type: "input",
+    question: "Wie heißt die COBOL-Division, die die Programmlogik enthält?",
+    correct: "PROCEDURE DIVISION",
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  {
+    id: 39,
+    type: "mc",
+    question: "Was ist der Zweck der `finally`-Klausel in einem Java `try-catch`-Block?",
+    options: ["Sie wird nur ausgeführt, wenn keine Exception auftritt.", "Sie wird nur ausgeführt, wenn eine Exception auftritt.", "Sie wird immer ausgeführt, unabhängig davon, ob eine Exception auftritt oder nicht.", "Sie beendet das Programm."],
+    correct: 2,
+    timeLimit: 45,
+    difficulty: "easy"
+  },
+  {
+    id: 40,
+    type: "truefalse",
+    question: "C++ ist eine rein prozedurale Programmiersprache.",
+    correct: false,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 41,
+    type: "input",
+    question: "Welche SQL-Anweisung wird verwendet, um Daten in einer Tabelle zu ändern?",
+    correct: "UPDATE",
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 42,
+    type: "mc",
+    question: "Was ist `pip` im Kontext von Python?",
+    options: ["Ein Web-Framework", "Eine Test-Bibliothek", "Ein Paket-Manager", "Ein Code-Editor"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 43,
+    type: "truefalse",
+    question: "`null` und `undefined` sind in JavaScript strikt gleich (`===`).",
+    correct: false,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 44,
+    type: "input",
+    question: "Wie deklariert man in C einen Zeiger auf einen Integer?",
+    correct: "int *",
+    timeLimit: 35,
+    difficulty: "easy"
+  },
+  {
+    id: 45,
+    type: "mc",
+    question: "Wofür steht COBOL?",
+    options: ["Common Business-Oriented Language", "Computer Basic Object Language", "Central Business Operation Language", "Code On-Board Local"],
+    correct: 0,
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  {
+    id: 46,
+    type: "truefalse",
+    question: "Ein `Set` in Python kann doppelte Elemente enthalten.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 47,
+    type: "input",
+    question: "Welches Schlüsselwort wird in Java verwendet, um eine Methode in einer Subklasse zu überschreiben?",
+    correct: "@Override",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 48,
+    type: "mc",
+    question: "Was ist ein 'Foreign Key' in einer SQL-Datenbank?",
+    options: ["Ein Schlüssel, der eindeutig jede Zeile identifiziert.", "Ein Schlüssel, der auf den Primärschlüssel einer anderen Tabelle verweist.", "Ein Schlüssel, der zur Verschlüsselung verwendet wird.", "Ein Schlüssel, der keinen Index hat."],
+    correct: 1,
+    timeLimit: 45,
+    difficulty: "easy"
+  },
+  {
+    id: 49,
+    type: "truefalse",
+    question: "Jede `if`-Anweisung benötigt einen `else`-Block.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 50,
+    type: "input",
+    question: "Welche Funktion in C gibt die Länge eines Strings zurück (ohne Nullterminator)?",
+    correct: "strlen",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 51,
+    type: "mc",
+    question: "Welches Protokoll wird standardmäßig für das Senden von E-Mails verwendet?",
+    options: ["FTP", "SMTP", "HTTP", "POP3"],
+    correct: 1,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 52,
+    type: "truefalse",
+    question: "Java-Code wird direkt in Maschinencode kompiliert.",
+    correct: false,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 53,
+    type: "input",
+    question: "Wie heißt die COBOL-Division, die die verwendeten Dateien deklariert?",
+    correct: "ENVIRONMENT DIVISION",
+    timeLimit: 45,
+    difficulty: "easy"
+  },
+  {
+    id: 54,
+    type: "mc",
+    question: "Welche Aggregatfunktion in SQL gibt die Anzahl der Zeilen zurück?",
+    options: ["SUM()", "MAX()", "COUNT()", "AVG()"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 55,
+    type: "truefalse",
+    question: "In Python ist die Einrückung (Indentation) nur für die Lesbarkeit wichtig und hat keinen Einfluss auf die Logik.",
+    correct: false,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 56,
+    type: "input",
+    question: "Wofür steht 'CPU'?",
+    correct: "Central Processing Unit",
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 57,
+    type: "mc",
+    question: "Welche Datenstruktur arbeitet nach dem LIFO-Prinzip (Last-In, First-Out)?",
+    options: ["Queue", "Stack", "Array", "Linked List"],
+    correct: 1,
+    timeLimit: 35,
+    difficulty: "easy"
+  },
+  {
+    id: 58,
+    type: "truefalse",
+    question: "Der Befehl `git pull` ist eine Kombination aus `git fetch` und `git merge`.",
+    correct: true,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 59,
+    type: "input",
+    question: "Welches Schlüsselwort leitet in Java eine Vererbung ein?",
+    correct: "extends",
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 60,
+    type: "mc",
+    question: "Was ist der Zweck der `WHERE`-Klausel in einer SQL-Abfrage?",
+    options: ["Sortieren der Ergebnisse", "Gruppieren von Ergebnissen", "Filtern von Zeilen", "Verbinden von Tabellen"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 61,
+    type: "truefalse",
+    question: "Ein 'Integer' in C kann Fließkommazahlen speichern.",
+    correct: false,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 62,
+    type: "input",
+    question: "Welches Dateisystem wird standardmäßig in den meisten modernen Linux-Distributionen verwendet?",
+    correct: "ext4",
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  {
+    id: 63,
+    type: "mc",
+    question: "Welches dieser Konzepte gehört nicht zu den vier Hauptprinzipien der OOP?",
+    options: ["Vererbung", "Kapselung", "Polymorphie", "Iteration"],
+    correct: 3,
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  {
+    id: 64,
+    type: "truefalse",
+    question: "COBOL-Code ist bekannt für seine gute Lesbarkeit, da er natürlicher Sprache ähnelt.",
+    correct: true,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 65,
+    type: "input",
+    question: "Wie importiert man die `math`-Bibliothek in Python?",
+    correct: "import math",
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 66,
+    type: "mc",
+    question: "Welcher `JOIN` gibt nur Datensätze zurück, die in beiden Tabellen einen übereinstimmenden Wert haben?",
+    options: ["LEFT JOIN", "RIGHT JOIN", "FULL OUTER JOIN", "INNER JOIN"],
+    correct: 3,
+    timeLimit: 35,
+    difficulty: "easy"
+  },
+  {
+    id: 67,
+    type: "truefalse",
+    question: "Ein Interface in Java kann konkrete Methodenimplementierungen enthalten.",
+    correct: true,
+    timeLimit: 35,
+    difficulty: "easy"
+  },
+  {
+    id: 68,
+    type: "input",
+    question: "Welches Zeichen wird verwendet, um in C eine einzelne Zeile zu kommentieren?",
+    correct: "//",
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 69,
+    type: "mc",
+    question: "Was ist ein 'Constructor' in Java?",
+    options: ["Eine Methode zum Zerstören von Objekten", "Eine spezielle Methode zur Initialisierung von Objekten", "Eine Methode, um Klassen zu verbinden", "Eine Variable, die die Objektanzahl speichert"],
+    correct: 1,
+    timeLimit: 40,
+    difficulty: "easy"
+  },
+  {
+    id: 70,
+    type: "truefalse",
+    question: "Die `TRUNCATE`-Anweisung in SQL kann mit einer `WHERE`-Klausel verwendet werden.",
+    correct: false,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 71,
+    type: "input",
+    question: "Welches Schlüsselwort wird in Python verwendet, um eine anonyme Funktion (Lambda-Funktion) zu erstellen?",
+    correct: "lambda",
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 72,
+    type: "mc",
+    question: "Was beschreibt der Begriff 'Big O Notation'?",
+    options: ["Die Größe des Programms", "Die Anzahl der Codezeilen", "Die Komplexität eines Algorithmus", "Die Anzahl der Programmierer im Team"],
+    correct: 2,
+    timeLimit: 45,
+    difficulty: "easy"
+  },
+  {
+    id: 73,
+    type: "truefalse",
+    question: "Ein `char` in C wird immer durch einfache Anführungszeichen (`) deklariert.",
+    correct: true,
+    timeLimit: 20,
+    difficulty: "easy"
+  },
+  {
+    id: 74,
+    type: "input",
+    question: "Wofür steht 'SQL'?",
+    correct: "Structured Query Language",
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 75,
+    type: "mc",
+    question: "Welche der folgenden Schleifen wird in C mindestens einmal ausgeführt?",
+    options: ["for", "while", "do-while", "if-else"],
+    correct: 2,
+    timeLimit: 30,
+    difficulty: "easy"
+  }
+];
+
+  {
+    id: 1,
+    type: "code",
+    question: "Diese Java Singleton-Implementierung ist fehlerhaft und nicht threadsicher. Was fehlt, um das 'double-checked locking' korrekt zu implementieren?",
+    code: `public class Singleton {\n    private static Singleton instance;\n    private Singleton() {}\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            synchronized (Singleton.class) {\n                instance = new Singleton();\n            }\n        }\n        return instance;\n    }\n}`,
+    correct: "Das 'volatile' Schlüsselwort und eine zweite 'null'-Prüfung im synchronized-Block",
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 2,
+    type: "mc",
+    question: "Welches der folgenden Konzepte ist eine der größten Innovationen von Rust?",
+    options: [
+      "Garbage Collection",
+      "Dynamisches Typing",
+      "Das Besitz- und Ausleihsystem (ownership and borrowing system)",
+      "Statische Typisierung"
+    ],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 3,
+    type: "code",
+    question: "Dieser C++ Code führt zu undefiniertem Verhalten, weil der Destruktor der abgeleiteten Klasse nicht aufgerufen wird. Wie korrigiert man das?",
+    code: `class Base {\npublic:\n    ~Base() { /*...*/ }\n};\nclass Derived : public Base {\npublic:\n    ~Derived() { /*...*/ }\n};\n\nBase* ptr = new Derived();\ndelete ptr;`,
+    correct: "Den Destruktor der Base-Klasse als 'virtual' deklarieren.",
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 4,
+    type: "code",
+    question: "Dieser C# Code kann zu einem Deadlock führen. Was ist die Ursache?",
+    code: `Thread t1 = new Thread(() => { lock(A) { Thread.Sleep(100); lock(B); } });\nThread t2 = new Thread(() => { lock(B) { Thread.Sleep(100); lock(A); } });`,
+    correct: "Die Threads erwerben die Sperren (Locks) in unterschiedlicher Reihenfolge.",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 5,
+    type: "mc",
+    question: "Welcher Informatiker prägte den Begriff 'Objektorientierte Programmierung' und war der Hauptentwickler von Smalltalk?",
+    options: [
+      "Bjarne Stroustrup",
+      "Dennis Ritchie",
+      "Alan Kay",
+      "James Gosling"
+    ],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 6,
+    type: "code",
+    question: "Dieser C++ Code führt zu einem 'double free' Fehler. Was fehlt in der Klasse, um dies gemäß der 'Rule of Three' zu verhindern?",
+    code: `class MyClass {\npublic:\n    int* data;\n    MyClass(int val) { data = new int(val); }\n    ~MyClass() { delete data; }\n};\n\nint main() {\n    MyClass obj1(10);\n    MyClass obj2 = obj1;\n}`,
+    correct: "Ein expliziter Kopierkonstruktor (Copy Constructor)",
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 7,
+    type: "mc",
+    question: "Welcher Transaktionsisolationslevel in SQL schützt vor 'Phantom Reads'?",
+    options: ["READ UNCOMMITTED", "READ COMMITTED", "REPEATABLE READ", "SERIALIZABLE"],
+    correct: 3,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 8,
+    type: "mc",
+    question: "Gemäß dem CAP-Theorem muss ein verteiltes System im Falle einer Netzwerkpartition (Partition Tolerance) zwischen welchen beiden Garantien wählen?",
+    options: ["Consistency und Durability", "Availability und Scalability", "Consistency und Availability", "Latency und Throughput"],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 9,
+    type: "input",
+    question: "Wie nennt man in Python eine Funktion, deren Ausführung pausiert und später wieder aufgenommen werden kann und dabei ihren Zustand beibehält?",
+    correct: "Generator",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 10,
+    type: "code",
+    question: "Was ist der Wert von `x` nach diesem C-Code? (Das Verhalten ist undefiniert, aber was ist ein wahrscheinliches Ergebnis auf gängigen Compilern?)",
+    code: `int i = 5;\nint x = ++i + i++;`,
+    correct: "12",
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 11,
+    type: "mc",
+    question: "Was ist der Zweck des `volatile`-Schlüsselworts in Java?",
+    options: ["Es verhindert, dass eine Variable serialisiert wird.", "Es stellt sicher, dass Änderungen an einer Variable sofort für andere Threads sichtbar sind.", "Es markiert eine Methode als veraltet.", "Es deklariert eine Variable als unveränderlich."],
+    correct: 1,
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 12,
+    type: "mc",
+    question: "Warum kann Dijkstra's Algorithmus nicht mit negativen Kantengewichten umgehen, der Bellman-Ford-Algorithmus aber schon?",
+    options: ["Dijkstra verwendet eine Prioritätswarteschlange, die bei negativen Werten versagt.", "Dijkstra's gieriger Ansatz geht fälschlicherweise davon aus, dass ein einmal besuchter Knoten den kürzesten Weg hat, was bei negativen Kanten nicht mehr gilt.", "Bellman-Ford ist ein Brute-Force-Algorithmus.", "Dijkstra funktioniert nur auf azyklischen Graphen."],
+    correct: 1,
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 13,
+    type: "input",
+    question: "Welcher Mechanismus erlaubt es einer Python-Klasse, das Verhalten von Operatoren wie `+` oder `[]` für ihre Instanzen zu definieren?",
+    correct: "Magic Methods",
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 14,
+    type: "mc",
+    question: "Welcher Datentyp in COBOL wird verwendet, um gepackte Dezimalzahlen effizient zu speichern?",
+    options: ["PIC 9", "COMP", "COMP-3", "BINARY"],
+    correct: 2,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 15,
+    type: "code",
+    question: "Was gibt dieser JavaScript-Code aus?",
+    code: `(function() {\n  var a = b = 3;\n})();\n\nconsole.log(typeof a, typeof b);`,
+    correct: "undefined number",
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 16,
+    type: "input",
+    question: "Wie nennt man das Regressionsmodell, das L1-Regularisierung verwendet, um Merkmalsselektion durchzuführen?",
+    correct: "Lasso",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 17,
+    type: "input",
+    question: "Wie nennt man den Zustand in einem verteilten System, bei dem aufgrund einer Netzwerkpartition mehrere Knoten fälschlicherweise glauben, der einzige 'Master' zu sein?",
+    correct: "Split-Brain",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 18,
+    type: "mc",
+    question: "Was ist eine 'Closure' in der Programmierung?",
+    options: ["Eine Methode, die eine Klasse schließt.", "Eine Funktion, die sich an die Variablen aus ihrem lexikalischen Geltungsbereich erinnert, auch wenn sie außerhalb dieses Bereichs ausgeführt wird.", "Ein Fehler, der durch eine Endlosschleife verursacht wird.", "Eine Datenstruktur zum schnellen Nachschlagen."],
+    correct: 1,
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 19,
+    type: "code",
+    question: "Was ist der Output dieses C-Codes auf einem 64-Bit-System?",
+    code: `int arr[5];\nprintf("%d", (char*)(&arr + 1) - (char*)(&arr[0]));`,
+    correct: "20",
+    timeLimit: 80,
+    difficulty: "hard"
+  },
+  {
+    id: 20,
+    type: "code",
+    question: "Welches Ergebnis liefert diese SQL-Abfrage in PostgreSQL?",
+    code: `SELECT CAST('123' AS INTEGER) + '4';`,
+    correct: "127",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 21,
+    type: "input",
+    question: "Wie heißt das Entwurfsmuster, das es einem Objekt ermöglicht, sein Verhalten zu ändern, wenn sich sein interner Zustand ändert?",
+    correct: "State",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 22,
+    type: "mc",
+    question: "Was ist der Hauptunterschied zwischen einem AVL-Baum und einem Rot-Schwarz-Baum?",
+    options: ["AVL-Bäume erlauben keine Duplikate.", "Rot-Schwarz-Bäume sind immer perfekt balanciert.", "AVL-Bäume haben strengere Balancierungsregeln und sind daher bei Suchen schneller, aber bei Einfüge- und Löschvorgängen langsamer.", "AVL-Bäume verwenden Farben zur Balancierung."],
+    correct: 2,
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 23,
+    type: "mc",
+    question: "Welches Konzept im Java Memory Model (JMM) definiert eine partielle Ordnung von Speicheroperationen, um die Sichtbarkeit von Änderungen zwischen Threads zu garantieren?",
+    options: ["Memory Barrier", "Happens-Before Relationship", "Thread-Local Storage", "Atomic Operation"],
+    correct: 1,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 24,
+    type: "input",
+    question: "Welcher Konsensalgorithmus wird von Systemen wie etcd und Consul verwendet, um einen fehlertoleranten, verteilten Zustand zu verwalten?",
+    correct: "Raft",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 25,
+    type: "code",
+    question: "Was ist der Wert von `s` in diesem Python-Code?",
+    code: `s = 'hello'\ns[0] = 'H'`,
+    correct: "TypeError",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 26,
+    type: "mc",
+    question: "Was beschreibt das 'Covariance' und 'Contravariance' Prinzip in der Typtheorie?",
+    options: ["Wie sich Subtyping bei einfachen Typen verhält.", "Wie sich Subtyping bei komplexen Typen (z.B. Generics, Funktionssignaturen) verhält.", "Wie Variablen im Speicher angeordnet werden.", "Wie die Garbage Collection funktioniert."],
+    correct: 1,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 27,
+    type: "input",
+    question: "Welcher Git-Befehl wird verwendet, um eine Serie von Commits interaktiv zu bearbeiten, neu anzuordnen oder zusammenzufassen?",
+    correct: "git rebase -i",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 28,
+    type: "input",
+    question: "Wie nennt man eine Funktion höherer Ordnung, die eine Funktion nimmt und eine neue Funktion mit erweitertem Verhalten zurückgibt?",
+    correct: "Decorator",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 29,
+    type: "mc",
+    question: "In der Transformer-Architektur (ML), was ist der Hauptzweck des 'Self-Attention'-Mechanismus?",
+    options: ["Die Rechenzeit zu reduzieren.", "Die Wichtigkeit verschiedener Wörter in einer Sequenz relativ zueinander zu gewichten.", " overfitting zu vermeiden.", "Die Eingabedaten zu normalisieren."],
+    correct: 1,
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 30,
+    type: "mc",
+    question: "Was unterscheidet eine 'Materialized View' von einer normalen SQL 'VIEW'?",
+    options: ["Sie kann nicht indiziert werden.", "Sie speichert das Abfrageergebnis physisch und muss manuell oder automatisch aktualisiert werden.", "Sie ist nur in NoSQL-Datenbanken verfügbar.", "Sie kann keine Joins enthalten."],
+    correct: 1,
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 31,
+    type: "code",
+    question: "Was gibt dieser Java-Code aus?",
+    code: `Integer i1 = 127;\nInteger i2 = 127;\nSystem.out.println(i1 == i2);`,
+    correct: "true",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 32,
+    type: "input",
+    question: "Welcher TCP-Mechanismus verhindert, dass ein schneller Sender einen langsamen Empfänger überlastet?",
+    correct: "Flow Control",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 33,
+    type: "mc",
+    question: "Was ist 'Memory Alignment' in C?",
+    options: ["Das manuelle Freigeben von Speicher.", "Die Art und Weise, wie Daten an bestimmten Adressgrenzen im Speicher abgelegt werden, um die Leistung zu optimieren.", "Ein Fehler, bei dem auf ungültigen Speicher zugegriffen wird.", "Das Sortieren von Daten im Speicher."],
+    correct: 1,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 34,
+    type: "code",
+    question: "Welcher Fehler wird durch diesen Python-Code ausgelöst?",
+    code: `my_dict = {}\nmy_list = [1, 2]\nmy_dict[my_list] = "value"`,
+    correct: "TypeError: unhashable type: 'list'",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 35,
+    type: "input",
+    question: "Wie heißt das Phänomen in Machine Learning, bei dem die Gradienten während des Trainings sehr klein werden und das Lernen verlangsamen oder stoppen?",
+    correct: "Vanishing Gradient Problem",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 36,
+    type: "mc",
+    question: "Was unterscheidet das 'Observer Pattern' vom 'Pub/Sub Pattern'?",
+    options: ["Es gibt keinen Unterschied.", "Im Observer-Pattern kennen sich Subject und Observer direkt; im Pub/Sub sind sie durch einen Broker entkoppelt.", "Das Observer-Pattern ist asynchron, Pub/Sub ist synchron.", "Das Pub/Sub-Pattern kann nur einen einzigen Subscriber haben."],
+    correct: 1,
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 37,
+    type: "mc",
+    question: "Welche Eigenschaft beschreibt eine Operation, die mehrmals ausgeführt werden kann, ohne das Ergebnis über die erste Ausführung hinaus zu verändern?",
+    options: ["Idempotenz", "Atomarität", "Assoziativität", "Transitivität"],
+    correct: 0,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 38,
+    type: "code",
+    question: "Was gibt dieser JavaScript-Code aus?",
+    code: `console.log([] + []);`,
+    correct: "",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 39,
+    type: "input",
+    question: "Welches SOLID-Prinzip besagt, dass abgeleitete Klassen in der Lage sein müssen, ihre Basisklassen zu ersetzen, ohne das Programm zu beeinträchtigen?",
+    correct: "Liskov Substitution Principle",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 40,
+    type: "mc",
+    question: "Was ist 'Tail Call Optimization'?",
+    options: ["Eine Optimierung, um den letzten Wert einer Liste schnell zu finden.", "Eine Methode, bei der ein rekursiver Aufruf am Ende einer Funktion durch einen Sprungbefehl (goto) ersetzt wird, um Stack-Overflow-Fehler zu vermeiden.", "Ein Algorithmus zur Optimierung von SQL-Abfragen.", "Eine Hardware-Beschleunigung für Matrixmultiplikationen."],
+    correct: 1,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 41,
+    type: "mc",
+    question: "Was ist die primäre Anwendung eines Bloom-Filters?",
+    options: ["Sortieren von großen Datenmengen.", "Eine speichereffiziente, probabilistische Datenstruktur, um zu testen, ob ein Element Mitglied einer Menge ist.", "Verlustfreie Kompression von Texten.", "Sichere Speicherung von Passwörtern."],
+    correct: 1,
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 42,
+    type: "input",
+    question: "Wie heißt die Datenstruktur, die häufig für die Implementierung von 'Least Recently Used' (LRU) Caches verwendet wird?",
+    correct: "Doubly Linked List",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 43,
+    type: "code",
+    question: "Was ist der Wert von `x` in diesem C-Code?",
+    code: `int x = printf("Hello");`,
+    correct: "5",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 44,
+    type: "mc",
+    question: "In SQL, was ist der Zweck von 'Window Functions' wie `ROW_NUMBER()` oder `LAG()`?",
+    options: ["Grafische Fenster in der Anwendung zu erstellen.", "Berechnungen über eine Menge von Zeilen durchzuführen, die mit der aktuellen Zeile in Beziehung stehen.", "Den Zugriff auf die Datenbank zu beschränken.", "Daten zu verschlüsseln."],
+    correct: 1,
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 45,
+    type: "input",
+    question: "Welches Entwurfsmuster verwendet typischerweise private Konstruktoren und eine statische Methode, um sicherzustellen, dass nur eine Instanz einer Klasse existiert?",
+    correct: "Singleton",
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 46,
+    type: "input",
+    question: "Welches Architekturmuster trennt Lese- und Schreiboperationen in unterschiedliche Modelle?",
+    correct: "CQRS",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 47,
+    type: "mc",
+    question: "Was ist eine 'Turing Machine'?",
+    options: ["Ein früher Supercomputer.", "Ein theoretisches Modell der Berechnung, das definiert, was algorithmisch berechenbar ist.", "Ein Framework für künstliche Intelligenz.", "Ein Verschlüsselungsalgorithmus."],
+    correct: 1,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 48,
+    type: "mc",
+    question: "Was ist der primäre Zweck des Diffie-Hellman-Schlüsselaustausch-Algorithmus?",
+    options: ["Asymmetrische Verschlüsselung von Nachrichten.", "Digitale Signaturen zu erstellen.", "Zwei Parteien zu ermöglichen, einen gemeinsamen geheimen Schlüssel über einen unsicheren Kanal zu vereinbaren.", "Passwörter zu hashen."],
+    correct: 2,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 49,
+    type: "code",
+    question: "Was gibt dieser Python-Code aus?",
+    code: `class Parent: pass\nclass Child1(Parent): pass\nclass Child2(Parent): pass\nprint(issubclass(Child1, Child2))`,
+    correct: "False",
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 50,
+    type: "input",
+    question: "Wie nennt man den Vorgang, bei dem ein Objekt einer abgeleiteten Klasse als Objekt seiner Basisklasse behandelt wird?",
+    correct: "Upcasting",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 51,
+    type: "mc",
+    question: "Was ist ein 'side effect' in der funktionalen Programmierung?",
+    options: ["Ein unerwarteter Fehler im Code.", "Jede Interaktion einer Funktion mit der Außenwelt, die nicht über ihre Rückgabewerte erfolgt (z.B. Ändern einer globalen Variable, I/O).", "Eine Leistungsoptimierung durch den Compiler.", "Eine zusätzliche, nützliche Funktion eines Algorithmus."],
+    correct: 1,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 52,
+    type: "mc",
+    question: "Was ist die definierende Eigenschaft eines B+ Baumes im Vergleich zu einem B-Baum?",
+    options: ["Er ist immer ein binärer Baum.", "Nur Blattknoten speichern die eigentlichen Daten (oder Zeiger darauf), was Scans über Bereiche effizienter macht.", "Er hat eine geringere Höhe.", "Er kann negative Schlüssel speichern."],
+    correct: 1,
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 53,
+    type: "input",
+    question: "Wie heißt die Python Enhancement Proposal (PEP), die den Style Guide für Python-Code definiert?",
+    correct: "PEP 8",
+    timeLimit: 40,
+    difficulty: "hard"
+  },
+  {
+    id: 54,
+    type: "mc",
+    question: "Was ist der Zweck des 'Y-Combinator' in der theoretischen Informatik?",
+    options: ["Ein Startup-Inkubator im Silicon Valley.", "Ein Fixpunkt-Kombinator, der die Implementierung von Rekursion in Sprachen ermöglicht, die sie nicht direkt unterstützen (wie das Lambda-Kalkül).", "Ein Algorithmus zur Graphen-Traversierung.", "Ein Kompressionsalgorithmus."],
+    correct: 1,
+    timeLimit: 80,
+    difficulty: "hard"
+  },
+  {
+    id: 55,
+    type: "mc",
+    question: "Was ist der Hauptvorteil von WebAssembly (Wasm)?",
+    options: ["Es ersetzt JavaScript vollständig.", "Es bietet ein performantes, portables Binärformat als Kompilierungsziel für Sprachen wie C++, C# und Rust im Web.", "Es kann nur in Google Chrome ausgeführt werden.", "Es ist eine neue JavaScript-Bibliothek."],
+    correct: 1,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 56,
+    type: "code",
+    question: "Was gibt dieser Java-Code aus?",
+    code: `System.out.println(1.0 / 0.0);`,
+    correct: "Infinity",
+    timeLimit: 50,
+    difficulty: "hard"
+  },
+  {
+    id: 57,
+    type: "input",
+    question: "Welches Paradigma der nebenläufigen Programmierung vermeidet 'shared state' und setzt stattdessen auf die Übergabe von Nachrichten zwischen Prozessen?",
+    correct: "Actor Model",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 58,
+    type: "mc",
+    question: "Was ist 'Type Erasure' in Java Generics?",
+    options: ["Der Prozess des Löschens ungenutzter Typen.", "Der Compiler ersetzt zur Laufzeit alle generischen Typparameter durch ihre Grenzen oder durch `Object`.", "Ein Fehler, bei dem ein falscher Typ verwendet wird.", "Das automatische Konvertieren von Typen."],
+    correct: 1,
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 59,
+    type: "input",
+    question: "Ein Min-Heap wird durch das Array [3, 5, 8, 10, 6] dargestellt. Wie sieht das Array nach dem Einfügen des Werts 2 aus?",
+    correct: "[2, 5, 3, 10, 6, 8]",
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 60,
+    type: "input",
+    question: "Wie nennt man den Versuch eines Angreifers, durch wiederholtes Senden von SYN-Paketen die Ressourcen eines Servers zu erschöpfen?",
+    correct: "SYN Flood",
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 61,
+    type: "code",
+    question: "Was ist der Output dieses JavaScript Codes?",
+    code: `console.log(NaN === NaN);`,
+    correct: "false",
+    timeLimit: 45,
+    difficulty: "hard"
+  },
+  {
+    id: 62,
+    type: "mc",
+    question: "Welches Problem versucht der 'Circuit Breaker' Pattern zu lösen?",
+    options: ["Diebstahl von elektrischem Strom.", "Verhinderung von kaskadierenden Fehlern in verteilten Systemen, indem Anrufe an einen ausgefallenen Dienst gestoppt werden.", "Endlosschleifen in der Programmierung.", "Sicherheitslücken durch SQL-Injection."],
+    correct: 1,
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 63,
+    type: "code",
+    question: "Was ist der wahrscheinliche Output dieses C-Codes auf einem 64-Bit-System mit typischem Alignment?",
+    code: `struct Example { char a; int b; char c; };\nprintf("%zu", sizeof(struct Example));`,
+    correct: "12",
+    timeLimit: 70,
+    difficulty: "hard"
+  },
+  {
+    id: 64,
+    type: "input",
+    question: "Wie heißt der Prozess in neuronalen Netzen, bei dem die Gewichte basierend auf dem Fehler angepasst werden?",
+    correct: "Backpropagation",
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 65,
+    type: "mc",
+    question: "Was ist 'Currying' in der funktionalen Programmierung?",
+    options: ["Eine Methode, um scharfes Essen zuzubereiten.", "Das Würzen von Code mit unnötigen Features.", "Die Technik, eine Funktion, die mehrere Argumente entgegennimmt, in eine Sequenz von Funktionen umzuwandeln, die jeweils nur ein Argument nehmen.", "Das Speichern von Zwischenergebnissen von Funktionen."],
+    correct: 2,
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 66,
+    type: "input",
+    question: "Welche spezielle Python-Methode muss in einer Klasse implementiert werden, damit deren Instanzen wie Funktionen aufgerufen werden können?",
+    correct: "__call__",
+    timeLimit: 55,
+    difficulty: "hard"
+  },
+  {
+    id: 67,
+    type: "code",
+    question: "Welchen Wert hat `x` in diesem SQL Statement (in den meisten Dialekten)?",
+    code: `SELECT 1 IS NOT NULL AS x;`,
+    correct: "1",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 68,
+    type: "input",
+    question: "Wie heißt das Architekturkonzept, bei dem der Zustand einer Anwendung als eine Folge von Ereignissen gespeichert wird?",
+    correct: "Event Sourcing",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 69,
+    type: "mc",
+    question: "Was ist eine 'Monade' in der funktionalen Programmierung?",
+    options: ["Eine einzelne, unteilbare Code-Einheit.", "Ein Entwurfsmuster, das einen sequenziellen Berechnungsfluss in einem rein funktionalen Kontext ermöglicht.", "Eine Variable, die nur einmal zugewiesen werden kann.", "Ein Datentyp für ganze Zahlen."],
+    correct: 1,
+    timeLimit: 80,
+    difficulty: "hard"
+  },
+  {
+    id: 70,
+    type: "mc",
+    question: "Welche Ebene der Chomsky-Hierarchie beschreibt die Grammatiken, die von einem Pushdown-Automaten erkannt werden können?",
+    options: ["Typ-0 (Rekursiv aufzählbar)", "Typ-1 (Kontextsensitiv)", "Typ-2 (Kontextfrei)", "Typ-3 (Regulär)"],
+    correct: 2,
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 71,
+    type: "input",
+    question: "Wie nennt man eine Datenstruktur, die ein 'Prefix Tree' ist und zur effizienten Speicherung und zum Abruf von Strings verwendet wird?",
+    correct: "Trie",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 72,
+    type: "code",
+    question: "Was gibt dieser Java-Code aus?",
+    code: `Integer i3 = 128;\nInteger i4 = 128;\nSystem.out.println(i3 == i4);`,
+    correct: "false",
+    timeLimit: 65,
+    difficulty: "hard"
+  },
+  {
+    id: 73,
+    type: "mc",
+    question: "Was ist 'Amortized Time Complexity'?",
+    options: ["Die durchschnittliche Zeitkomplexität über alle möglichen Eingaben.", "Die Zeitkomplexität im schlechtesten Fall.", "Die durchschnittliche Zeit, die eine Operation über eine Sequenz von Operationen benötigt.", "Die Speicherkomplexität eines Algorithmus."],
+    correct: 2,
+    timeLimit: 75,
+    difficulty: "hard"
+  },
+  {
+    id: 74,
+    type: "input",
+    question: "Wie hieß das interne Cluster-Management-System bei Google, das als Vorläufer und Inspiration für Kubernetes gilt?",
+    correct: "Borg",
+    timeLimit: 60,
+    difficulty: "hard"
+  },
+  {
+    id: 75,
+    type: "input",
+    question: "Welcher DNS-Record-Typ wird verwendet, um einen Mailserver für eine Domain anzugeben?",
+    correct: "MX",
+    timeLimit: 45,
+    difficulty: "hard"
+  }
+];
+
+// src/data/questions/GoatedQuestions.ts
+  {
+    id: 1,
+    type: "input",
+    question: "In C/C++, wie deklariert man einen konstanten Zeiger (dessen Adresse sich nicht ändern kann) auf einen veränderbaren Integer?",
+    correct: "int * const",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 2,
+    type: "code",
+    question: "Was ist der wahrscheinliche Output dieses C-Codes auf einem 64-Bit-System (angenommen `sizeof(int)` ist 4)?",
+    code: `void func(int arr[10]) {\n  printf("%zu ", sizeof(arr));\n}\n\nint main() {\n  int arr[10];\n  printf("%zu ", sizeof(arr));\n  func(arr);\n  return 0;\n}`,
+    correct: "40 8",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 3,
+    type: "mc",
+    question: "Was deklariert der folgende C-Code? `void (*foo(int))[10];`",
+    options: ["Eine Funktion `foo`, die einen int nimmt und einen Pointer auf ein Array von 10 Pointern auf void zurückgibt.", "Ein Pointer `foo` auf eine Funktion, die einen Pointer auf ein Array von 10 ints zurückgibt.", "Eine Funktion `foo`, die einen int nimmt und einen Pointer auf ein Array von 10 void-Elementen zurückgibt.", "Ein Pointer auf eine Funktion `foo`, die einen int nimmt und einen Pointer auf void zurückgibt."],
+    correct: 0,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 4,
+    type: "mc",
+    question: "Was ist laut C-Standard das Ergebnis von Zeigerarithmetik auf einem `void*`, wie z.B. in `void *p; p++;`?",
+    options: ["Der Zeiger wird um 1 Byte verschoben (als wäre es ein char*).", "Der Zeiger wird um die Wortbreite der CPU verschoben.", "Es ist nicht erlaubt und führt zu einem Compiler-Fehler.", "Der Code kompiliert, führt aber zu undefiniertem Verhalten zur Laufzeit."],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 5,
+    type: "mc",
+    question: "Was beschreibt in C++ der Begriff 'The Most Vexing Parse'?",
+    options: ["Ein schwer zu findender Speicherfehler.", "Ein syntaktisch korrekter Code, den der Compiler als Funktionsdeklaration statt als Variableninitialisierung interpretiert.", "Ein Fehler bei der Template-Instanziierung.", "Ein Linker-Fehler bei mehrfacher Definition."],
+    correct: 1,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 6,
+    type: "code",
+    question: "Was ist der Output dieses C-Codes, wenn man von einer Little-Endian-Architektur und 4-Byte-Integers ausgeht?",
+    code: `int i = 0x41424344; // Hex für 'ABCD'\nchar *c = (char*)&i;\nprintf("%c", *(c + 1));`,
+    correct: "C",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 7,
+    type: "code",
+    question: "In welcher Reihenfolge werden die Logs in der Konsole ausgegeben?",
+    code: `console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');`,
+    correct: "A, D, C, B",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 8,
+    type: "input",
+    question: "Welcher System Call (syscall) wird unter der Haube der `pthread_create`-Bibliotheksfunktion in Linux verwendet, um einen neuen Thread zu erzeugen?",
+    correct: "clone",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 9,
+    type: "mc",
+    question: "Welcher HTTP-Statuscode wird in einem Aprilscherz-RFC als 'I'm a teapot' definiert?",
+    options: ["420", "418", "451", "499"],
+    correct: 1,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 10,
+    type: "code",
+    question: "Was ist das Ergebnis dieses JavaScript-Ausdrucks?",
+    code: `console.log(Math.max() > Math.min())`,
+    correct: "false",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 11,
+    type: "input",
+    question: "Wie heißt die Speicherregion in der JVM, die in Java 8 die 'Permanent Generation' (PermGen) ersetzt hat?",
+    correct: "Metaspace",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 12,
+    type: "code",
+    question: "Was gibt dieser C-Code nach der Präprozessierung und Kompilierung aus?",
+    code: `#define MERGE(a, b) a##b\n#define VAL 10\nint main() {\n  int MERGE(var, VAL) = 5;\n  printf("%d", var10);\n  return 0;\n}`,
+    correct: "5",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 13,
+    type: "mc",
+    question: "Das Halting Problem beweist, dass es unmöglich ist, einen allgemeinen Algorithmus zu schreiben, der für alle Programme und deren Eingaben bestimmt, ob sie...",
+    options: ["korrekt sind.", "in polynomieller Zeit laufen.", "jemals terminieren werden.", "einen Speicherleck haben."],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 14,
+    type: "input",
+    question: "Welcher Git-Befehl wird verwendet, um ein Protokoll der Änderungen an den Spitzen von Branches und anderen Referenzen im lokalen Repository anzuzeigen (oft als Sicherheitsnetz bezeichnet)?",
+    correct: "git reflog",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 15,
+    type: "input",
+    question: "Welches POSIX-Signal mit dem numerischen Wert 15 wird standardmäßig an einen Prozess gesendet, um eine saubere Beendigung anzufordern?",
+    correct: "SIGTERM",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 16,
+    type: "code",
+    question: "Was gibt dieser Python-Code aus, der das 'Diamond Problem' der Mehrfachvererbung zeigt?",
+    code: `class A: pass\nclass B(A): pass\nclass C(A): pass\nclass D(B, C): pass\nprint([cls.__name__ for cls in D.__mro__])`,
+    correct: "['D', 'B', 'C', 'A', 'object']",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 17,
+    type: "mc",
+    question: "Welcher TCP-Staukontroll-Algorithmus ist der Standard im Linux-Kernel?",
+    options: ["Reno", "Tahoe", "Vegas", "CUBIC"],
+    correct: 3,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 18,
+    type: "mc",
+    question: "Welcher der folgenden C-Codes führt zu einem Compiler-Fehler, da arithmetische Operationen auf diesem Zeigertyp nicht zulässig sind?",
+    options: ["`int i; void* p = &i;`", "`char c; int *p = &c;`", "`void *p; p++;`", "`int a[5]; int *p = a+1;`"],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 19,
+    type: "code",
+    question: "Was gibt `ptr->val` in diesem C-Code aus?",
+    code: `struct s { int val; struct s *next; };\n\nint main() {\n  struct s a={1}, b={2}, c={3};\n  a.next = &b;\n  b.next = &c;\n  struct s *ptr = &a;\n  ptr = ptr->next->next;\n  printf("%d", ptr->val);\n  return 0;\n}`,
+    correct: "3",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 20,
+    type: "code",
+    question: "Was wird in der Konsole ausgegeben?",
+    code: `const obj = {\n  val: 'obj',\n  log: function() {\n    setTimeout(() => {\n      console.log(this.val);\n    }, 10);\n  }\n};\n\nobj.log();`,
+    correct: "obj",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 21,
+    type: "mc",
+    question: "Was ist das Ergebnis der bitweisen XOR-Operation `5 ^ 3`?",
+    options: ["2", "5", "6", "8"],
+    correct: 2,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 22,
+    type: "input",
+    question: "Welches COBOL-Verb wird verwendet, um alle elementaren Felder innerhalb eines Gruppenfeldes auf ihre Standardwerte (z.B. Nullen für numerische, Leerzeichen für alphanumerische) zurückzusetzen?",
+    correct: "INITIALIZE",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 23,
+    type: "input",
+    question: "Welcher informierte Suchalgorithmus erweitert Dijkstra, indem er eine Heuristik verwendet, um die Kosten zum Ziel effizienter abzuschätzen?",
+    correct: "A*",
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 24,
+    type: "mc",
+    question: "Was ist der Hauptunterschied zwischen `List<?>` (unbounded wildcard) und `List<Object>` in Java?",
+    options: ["Es gibt keinen Unterschied.", "`List<Object>` kann jedes Objekt halten, aber in `List<?>` kann man keine Elemente (außer null) einfügen.", "`List<?>` kann nur null-Werte halten.", "`List<Object>` ist nicht typsicher."],
+    correct: 1,
+    timeLimit: 60,
+    difficulty: "goated"
+  },
+  {
+    id: 25,
+    type: "mc",
+    question: "Welches der folgenden Konzepte ist KEINE der vier Coffman-Bedingungen für einen Deadlock?",
+    options: ["Mutual Exclusion", "Hold and Wait", "No Preemption", "Starvation"],
+    correct: 3,
+    timeLimit: 60,
+    difficulty: "goated"
+  }
+];

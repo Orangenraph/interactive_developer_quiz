@@ -1,63 +1,71 @@
-// src/data/questions/HardQuestions.ts
+import { McQuestion, InputQuestions, CodeQuestions } from '../BaseQuestions';
 
-import { McQuestion, TrueFalseQuestion, InputQuestions, CodeQuestions } from '../BaseQuestions';
+export const HARD_QUESTIONS: (McQuestion | InputQuestions | CodeQuestions)[] = [
 
-export const HARD_QUESTIONS: (McQuestion | TrueFalseQuestion | InputQuestions | CodeQuestions)[] = [
-  // Bestehende Fragen
   {
     id: 1,
-    type: "mc",
-    question: "Welches HTTP-Statuscode steht für 'Unauthorized'?",
-    options: ["400", "401", "403", "404"],
-    correct: 1,
-    timeLimit: 40,
+    type: "code",
+    question: "Diese Java Singleton-Implementierung ist fehlerhaft und nicht threadsicher. Was fehlt, um das 'double-checked locking' korrekt zu implementieren?",
+    code: `public class Singleton {\n    private static Singleton instance;\n    private Singleton() {}\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            synchronized (Singleton.class) {\n                instance = new Singleton();\n            }\n        }\n        return instance;\n    }\n}`,
+    correct: "Das 'volatile' Schlüsselwort und eine zweite 'null'-Prüfung im synchronized-Block",
+    timeLimit: 75,
     difficulty: "hard"
   },
   {
     id: 2,
     type: "mc",
-    question: "Welche Datenstruktur verwendet einen LIFO-Ansatz?",
-    options: ["Queue", "Stack", "Tree", "Graph"],
-    correct: 1,
-    timeLimit: 35,
+    question: "Welches der folgenden Konzepte ist eine der größten Innovationen von Rust?",
+    options: [
+      "Garbage Collection",
+      "Dynamisches Typing",
+      "Das Besitz- und Ausleihsystem (ownership and borrowing system)",
+      "Statische Typisierung"
+    ],
+    correct: 2,
+    timeLimit: 60,
     difficulty: "hard"
   },
   {
     id: 3,
-    type: "truefalse",
-    question: "In JavaScript sind '0' == false und '0' === false beide true.",
-    correct: false,
-    timeLimit: 35,
+    type: "code",
+    question: "Dieser C++ Code führt zu undefiniertem Verhalten, weil der Destruktor der abgeleiteten Klasse nicht aufgerufen wird. Wie korrigiert man das?",
+    code: `class Base {\npublic:\n    ~Base() { /*...*/ }\n};\nclass Derived : public Base {\npublic:\n    ~Derived() { /*...*/ }\n};\n\nBase* ptr = new Derived();\ndelete ptr;`,
+    correct: "Den Destruktor der Base-Klasse als 'virtual' deklarieren.",
+    timeLimit: 70,
     difficulty: "hard"
   },
   {
     id: 4,
-    type: "truefalse",
-    question: "Docker Container teilen sich den Kernel des Host-Betriebssystems.",
-    correct: true,
-    timeLimit: 40,
+    type: "code",
+    question: "Dieser C# Code kann zu einem Deadlock führen. Was ist die Ursache?",
+    code: `Thread t1 = new Thread(() => { lock(A) { Thread.Sleep(100); lock(B); } });\nThread t2 = new Thread(() => { lock(B) { Thread.Sleep(100); lock(A); } });`,
+    correct: "Die Threads erwerben die Sperren (Locks) in unterschiedlicher Reihenfolge.",
+    timeLimit: 65,
     difficulty: "hard"
   },
   {
     id: 5,
-    type: "input",
-    question: "Welches Design Pattern wird verwendet, um sicherzustellen, dass eine Klasse nur eine einzige Instanz hat?",
-    correct: "Singleton",
-    timeLimit: 45,
+    type: "mc",
+    question: "Welcher Informatiker prägte den Begriff 'Objektorientierte Programmierung' und war der Hauptentwickler von Smalltalk?",
+    options: [
+      "Bjarne Stroustrup",
+      "Dennis Ritchie",
+      "Alan Kay",
+      "James Gosling"
+    ],
+    correct: 2,
+    timeLimit: 60,
     difficulty: "hard"
   },
   {
     id: 6,
     type: "code",
-    question: "Was gibt dieser Code aus?",
-    code: `const arr = [1, 2, 3];
-arr[10] = 99;
-console.log(arr.length);`,
-    correct: "11",
-    timeLimit: 50,
+    question: "Dieser C++ Code führt zu einem 'double free' Fehler. Was fehlt in der Klasse, um dies gemäß der 'Rule of Three' zu verhindern?",
+    code: `class MyClass {\npublic:\n    int* data;\n    MyClass(int val) { data = new int(val); }\n    ~MyClass() { delete data; }\n};\n\nint main() {\n    MyClass obj1(10);\n    MyClass obj2 = obj1;\n}`,
+    correct: "Ein expliziter Kopierkonstruktor (Copy Constructor)",
+    timeLimit: 70,
     difficulty: "hard"
   },
-  // Neue Fragen
   {
     id: 7,
     type: "mc",
@@ -69,10 +77,11 @@ console.log(arr.length);`,
   },
   {
     id: 8,
-    type: "truefalse",
-    question: "Das CAP-Theorem besagt, dass ein verteiltes System gleichzeitig Konsistenz, Verfügbarkeit und Partitionstoleranz garantieren kann.",
-    correct: false,
-    timeLimit: 45,
+    type: "mc",
+    question: "Gemäß dem CAP-Theorem muss ein verteiltes System im Falle einer Netzwerkpartition (Partition Tolerance) zwischen welchen beiden Garantien wählen?",
+    options: ["Consistency und Durability", "Availability und Scalability", "Consistency und Availability", "Latency und Throughput"],
+    correct: 2,
+    timeLimit: 60,
     difficulty: "hard"
   },
   {
@@ -86,9 +95,9 @@ console.log(arr.length);`,
   {
     id: 10,
     type: "code",
-    question: "Was ist der Wert von `x` nach diesem C-Code?",
+    question: "Was ist der Wert von `x` nach diesem C-Code? (Das Verhalten ist undefiniert, aber was ist ein wahrscheinliches Ergebnis auf gängigen Compilern?)",
     code: `int i = 5;\nint x = ++i + i++;`,
-    correct: "13",
+    correct: "12",
     timeLimit: 70,
     difficulty: "hard"
   },
@@ -103,10 +112,11 @@ console.log(arr.length);`,
   },
   {
     id: 12,
-    type: "truefalse",
-    question: "Der Bellman-Ford-Algorithmus kann im Gegensatz zu Dijkstra's Algorithmus kürzeste Wege in Graphen mit negativen Kantengewichten finden.",
-    correct: true,
-    timeLimit: 50,
+    type: "mc",
+    question: "Warum kann Dijkstra's Algorithmus nicht mit negativen Kantengewichten umgehen, der Bellman-Ford-Algorithmus aber schon?",
+    options: ["Dijkstra verwendet eine Prioritätswarteschlange, die bei negativen Werten versagt.", "Dijkstra's gieriger Ansatz geht fälschlicherweise davon aus, dass ein einmal besuchter Knoten den kürzesten Weg hat, was bei negativen Kanten nicht mehr gilt.", "Bellman-Ford ist ein Brute-Force-Algorithmus.", "Dijkstra funktioniert nur auf azyklischen Graphen."],
+    correct: 1,
+    timeLimit: 75,
     difficulty: "hard"
   },
   {
@@ -131,16 +141,16 @@ console.log(arr.length);`,
     type: "code",
     question: "Was gibt dieser JavaScript-Code aus?",
     code: `(function() {\n  var a = b = 3;\n})();\n\nconsole.log(typeof a, typeof b);`,
-    correct: "undefined object",
+    correct: "undefined number",
     timeLimit: 75,
     difficulty: "hard"
   },
   {
     id: 16,
-    type: "truefalse",
-    question: "L1-Regularisierung in Machine Learning kann dazu führen, dass die Gewichte einiger Merkmale exakt auf null gesetzt werden, was zur Merkmalsselektion führt.",
-    correct: true,
-    timeLimit: 60,
+    type: "input",
+    question: "Wie nennt man das Regressionsmodell, das L1-Regularisierung verwendet, um Merkmalsselektion durchzuführen?",
+    correct: "Lasso",
+    timeLimit: 65,
     difficulty: "hard"
   },
   {
@@ -162,16 +172,17 @@ console.log(arr.length);`,
   },
   {
     id: 19,
-    type: "truefalse",
-    question: "In C ist der Ausdruck `array == &array[0]` für jedes Array `array` garantiert wahr.",
-    correct: true,
-    timeLimit: 45,
+    type: "code",
+    question: "Was ist der Output dieses C-Codes auf einem 64-Bit-System?",
+    code: `int arr[5];\nprintf("%d", (char*)(&arr + 1) - (char*)(&arr[0]));`,
+    correct: "20",
+    timeLimit: 80,
     difficulty: "hard"
   },
   {
     id: 20,
     type: "code",
-    question: "Welches Ergebnis liefert diese SQL-Abfrage?",
+    question: "Welches Ergebnis liefert diese SQL-Abfrage in PostgreSQL?",
     code: `SELECT CAST('123' AS INTEGER) + '4';`,
     correct: "127",
     timeLimit: 60,
@@ -196,10 +207,11 @@ console.log(arr.length);`,
   },
   {
     id: 23,
-    type: "truefalse",
-    question: "Die Java Memory Model (JMM) garantiert, dass alle Threads zu jeder Zeit eine konsistente Sicht auf den gemeinsamen Speicher haben, auch ohne Synchronisation.",
-    correct: false,
-    timeLimit: 50,
+    type: "mc",
+    question: "Welches Konzept im Java Memory Model (JMM) definiert eine partielle Ordnung von Speicheroperationen, um die Sichtbarkeit von Änderungen zwischen Threads zu garantieren?",
+    options: ["Memory Barrier", "Happens-Before Relationship", "Thread-Local Storage", "Atomic Operation"],
+    correct: 1,
+    timeLimit: 70,
     difficulty: "hard"
   },
   {
@@ -230,10 +242,10 @@ console.log(arr.length);`,
   },
   {
     id: 27,
-    type: "truefalse",
-    question: "Der `git cherry-pick` Befehl wird verwendet, um einen einzelnen Commit von einem Branch auf einen anderen anzuwenden.",
-    correct: true,
-    timeLimit: 40,
+    type: "input",
+    question: "Welcher Git-Befehl wird verwendet, um eine Serie von Commits interaktiv zu bearbeiten, neu anzuordnen oder zusammenzufassen?",
+    correct: "git rebase -i",
+    timeLimit: 60,
     difficulty: "hard"
   },
   {
@@ -255,10 +267,11 @@ console.log(arr.length);`,
   },
   {
     id: 30,
-    type: "truefalse",
-    question: "Eine SQL `VIEW` enthält immer eine physische Kopie der Daten.",
-    correct: false,
-    timeLimit: 45,
+    type: "mc",
+    question: "Was unterscheidet eine 'Materialized View' von einer normalen SQL 'VIEW'?",
+    options: ["Sie kann nicht indiziert werden.", "Sie speichert das Abfrageergebnis physisch und muss manuell oder automatisch aktualisiert werden.", "Sie ist nur in NoSQL-Datenbanken verfügbar.", "Sie kann keine Joins enthalten."],
+    correct: 1,
+    timeLimit: 65,
     difficulty: "hard"
   },
   {
@@ -281,7 +294,7 @@ console.log(arr.length);`,
   {
     id: 33,
     type: "mc",
-    question: "Was ist ein 'Memory Alignment' in C?",
+    question: "Was ist 'Memory Alignment' in C?",
     options: ["Das manuelle Freigeben von Speicher.", "Die Art und Weise, wie Daten an bestimmten Adressgrenzen im Speicher abgelegt werden, um die Leistung zu optimieren.", "Ein Fehler, bei dem auf ungültigen Speicher zugegriffen wird.", "Das Sortieren von Daten im Speicher."],
     correct: 1,
     timeLimit: 70,
@@ -289,10 +302,11 @@ console.log(arr.length);`,
   },
   {
     id: 34,
-    type: "truefalse",
-    question: "In Python können die Schlüssel eines Dictionarys veränderliche (mutable) Typen wie Listen sein.",
-    correct: false,
-    timeLimit: 40,
+    type: "code",
+    question: "Welcher Fehler wird durch diesen Python-Code ausgelöst?",
+    code: `my_dict = {}\nmy_list = [1, 2]\nmy_dict[my_list] = "value"`,
+    correct: "TypeError: unhashable type: 'list'",
+    timeLimit: 50,
     difficulty: "hard"
   },
   {
@@ -314,10 +328,11 @@ console.log(arr.length);`,
   },
   {
     id: 37,
-    type: "truefalse",
-    question: "Die `REDEFINES` Klausel in COBOL erlaubt es, denselben Speicherbereich mit unterschiedlichen Datenstrukturen zu beschreiben.",
-    correct: true,
-    timeLimit: 55,
+    type: "mc",
+    question: "Welche Eigenschaft beschreibt eine Operation, die mehrmals ausgeführt werden kann, ohne das Ergebnis über die erste Ausführung hinaus zu verändern?",
+    options: ["Idempotenz", "Atomarität", "Assoziativität", "Transitivität"],
+    correct: 0,
+    timeLimit: 60,
     difficulty: "hard"
   },
   {
@@ -348,10 +363,11 @@ console.log(arr.length);`,
   },
   {
     id: 41,
-    type: "truefalse",
-    question: "Ein Bloom-Filter kann falsch-positive Ergebnisse liefern (d.h. melden, ein Element sei vorhanden, obwohl es nicht da ist), aber niemals falsch-negative.",
-    correct: true,
-    timeLimit: 55,
+    type: "mc",
+    question: "Was ist die primäre Anwendung eines Bloom-Filters?",
+    options: ["Sortieren von großen Datenmengen.", "Eine speichereffiziente, probabilistische Datenstruktur, um zu testen, ob ein Element Mitglied einer Menge ist.", "Verlustfreie Kompression von Texten.", "Sichere Speicherung von Passwörtern."],
+    correct: 1,
+    timeLimit: 65,
     difficulty: "hard"
   },
   {
@@ -382,10 +398,10 @@ console.log(arr.length);`,
   },
   {
     id: 45,
-    type: "truefalse",
-    question: "In Java ist es möglich, eine Instanz einer Klasse zu erzeugen, die nur private Konstruktoren hat.",
-    correct: true,
-    timeLimit: 50,
+    type: "input",
+    question: "Welches Entwurfsmuster verwendet typischerweise private Konstruktoren und eine statische Methode, um sicherzustellen, dass nur eine Instanz einer Klasse existiert?",
+    correct: "Singleton",
+    timeLimit: 55,
     difficulty: "hard"
   },
   {
@@ -407,10 +423,11 @@ console.log(arr.length);`,
   },
   {
     id: 48,
-    type: "truefalse",
-    question: "Der Diffie-Hellman-Algorithmus wird zur asymmetrischen Verschlüsselung von Nachrichten verwendet.",
-    correct: false,
-    timeLimit: 65,
+    type: "mc",
+    question: "Was ist der primäre Zweck des Diffie-Hellman-Schlüsselaustausch-Algorithmus?",
+    options: ["Asymmetrische Verschlüsselung von Nachrichten.", "Digitale Signaturen zu erstellen.", "Zwei Parteien zu ermöglichen, einen gemeinsamen geheimen Schlüssel über einen unsicheren Kanal zu vereinbaren.", "Passwörter zu hashen."],
+    correct: 2,
+    timeLimit: 70,
     difficulty: "hard"
   },
   {
@@ -441,10 +458,11 @@ console.log(arr.length);`,
   },
   {
     id: 52,
-    type: "truefalse",
-    question: "In einem B-Baum befinden sich alle Blätter auf der gleichen Ebene.",
-    correct: true,
-    timeLimit: 50,
+    type: "mc",
+    question: "Was ist die definierende Eigenschaft eines B+ Baumes im Vergleich zu einem B-Baum?",
+    options: ["Er ist immer ein binärer Baum.", "Nur Blattknoten speichern die eigentlichen Daten (oder Zeiger darauf), was Scans über Bereiche effizienter macht.", "Er hat eine geringere Höhe.", "Er kann negative Schlüssel speichern."],
+    correct: 1,
+    timeLimit: 65,
     difficulty: "hard"
   },
   {
@@ -466,10 +484,11 @@ console.log(arr.length);`,
   },
   {
     id: 55,
-    type: "truefalse",
-    question: "Der `EXAMINE` Befehl in COBOL ist der moderne und empfohlene Weg, um Strings zu inspizieren und zu ersetzen.",
-    correct: false,
-    timeLimit: 60,
+    type: "mc",
+    question: "Was ist der Hauptvorteil von WebAssembly (Wasm)?",
+    options: ["Es ersetzt JavaScript vollständig.", "Es bietet ein performantes, portables Binärformat als Kompilierungsziel für Sprachen wie C++, C# und Rust im Web.", "Es kann nur in Google Chrome ausgeführt werden.", "Es ist eine neue JavaScript-Bibliothek."],
+    correct: 1,
+    timeLimit: 70,
     difficulty: "hard"
   },
   {
@@ -500,10 +519,10 @@ console.log(arr.length);`,
   },
   {
     id: 59,
-    type: "truefalse",
-    question: "Ein `Heap` ist eine Datenstruktur, die immer sortiert ist.",
-    correct: false,
-    timeLimit: 45,
+    type: "input",
+    question: "Ein Min-Heap wird durch das Array [3, 5, 8, 10, 6] dargestellt. Wie sieht das Array nach dem Einfügen des Werts 2 aus?",
+    correct: "[2, 5, 3, 10, 6, 8]",
+    timeLimit: 75,
     difficulty: "hard"
   },
   {
@@ -534,10 +553,11 @@ console.log(arr.length);`,
   },
   {
     id: 63,
-    type: "truefalse",
-    question: "In C ist der Wert von `sizeof(char)` per Definition immer 1.",
-    correct: true,
-    timeLimit: 40,
+    type: "code",
+    question: "Was ist der wahrscheinliche Output dieses C-Codes auf einem 64-Bit-System mit typischem Alignment?",
+    code: `struct Example { char a; int b; char c; };\nprintf("%zu", sizeof(struct Example));`,
+    correct: "12",
+    timeLimit: 70,
     difficulty: "hard"
   },
   {
@@ -559,16 +579,16 @@ console.log(arr.length);`,
   },
   {
     id: 66,
-    type: "truefalse",
-    question: "Python-Methoden, die mit einem doppelten Unterstrich beginnen und enden (z.B. `__init__`), sind für den Benutzer nicht direkt aufrufbar.",
-    correct: false,
-    timeLimit: 50,
+    type: "input",
+    question: "Welche spezielle Python-Methode muss in einer Klasse implementiert werden, damit deren Instanzen wie Funktionen aufgerufen werden können?",
+    correct: "__call__",
+    timeLimit: 55,
     difficulty: "hard"
   },
   {
     id: 67,
     type: "code",
-    question: "Welchen Wert hat `x` in diesem SQL Statement?",
+    question: "Welchen Wert hat `x` in diesem SQL Statement (in den meisten Dialekten)?",
     code: `SELECT 1 IS NOT NULL AS x;`,
     correct: "1",
     timeLimit: 60,
@@ -593,10 +613,11 @@ console.log(arr.length);`,
   },
   {
     id: 70,
-    type: "truefalse",
-    question: "Der Hauptzweck der 'IDENTIFICATION DIVISION' in COBOL ist die Deklaration von Variablen.",
-    correct: false,
-    timeLimit: 45,
+    type: "mc",
+    question: "Welche Ebene der Chomsky-Hierarchie beschreibt die Grammatiken, die von einem Pushdown-Automaten erkannt werden können?",
+    options: ["Typ-0 (Rekursiv aufzählbar)", "Typ-1 (Kontextsensitiv)", "Typ-2 (Kontextfrei)", "Typ-3 (Regulär)"],
+    correct: 2,
+    timeLimit: 75,
     difficulty: "hard"
   },
   {
@@ -627,10 +648,10 @@ console.log(arr.length);`,
   },
   {
     id: 74,
-    type: "truefalse",
-    question: "Kubernetes ist eine Container-Orchestrierungsplattform, die ursprünglich von Microsoft entwickelt wurde.",
-    correct: false,
-    timeLimit: 40,
+    type: "input",
+    question: "Wie hieß das interne Cluster-Management-System bei Google, das als Vorläufer und Inspiration für Kubernetes gilt?",
+    correct: "Borg",
+    timeLimit: 60,
     difficulty: "hard"
   },
   {

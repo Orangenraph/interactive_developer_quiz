@@ -3,59 +3,71 @@
 import { McQuestion, TrueFalseQuestion, InputQuestions, CodeQuestions } from '../BaseQuestions';
 
 export const MEDIUM_QUESTIONS: (McQuestion | TrueFalseQuestion | InputQuestions | CodeQuestions)[] = [
-  // Bestehende Fragen
   {
     id: 1,
-    type: "mc",
-    question: "Was ist die Zeitkomplexität einer binären Suche in einem sortierten Array?",
-    options: ["O(n)", "O(log n)", "O(n²)", "O(1)"],
-    correct: 1,
-    timeLimit: 45,
+    type: "code",
+    question: "Dieser Python-Code soll separate Listen erstellen, gibt aber [1] und [1, 2] aus. Was ist die korrekte Implementierung der Funktion?",
+    code: `def add_to_list(element, my_list=[]):\n    my_list.append(element)\n    return my_list\n\nlist1 = add_to_list(1)\nlist2 = add_to_list(2)`,
+    correct: "def add_to_list(element, my_list=None):\n    if my_list is None:\n        my_list = []\n    my_list.append(element)\n    return my_list",
+    timeLimit: 60,
     difficulty: "medium"
   },
   {
     id: 2,
     type: "mc",
-    question: "Welche dieser Speicherarten verliert ihre Daten, wenn der Computer ausgeschaltet wird?",
-    options: ["Festplatte", "RAM", "SSD", "USB-Stick"],
+    question: "Was war die größte Herausforderung bei der Einführung von 64-Bit-Architekturen für bestehende 32-Bit-Software?",
+    options: [
+      "Verdopplung der Integer-Größe führte zu Speicherlecks.",
+      "Die Änderung der Pointer-Größe brach die Speichermodelle.",
+      "Höhere Kosten für 64-Bit-Prozessoren.",
+      "Alle Betriebssysteme mussten neu geschrieben werden."
+    ],
     correct: 1,
-    timeLimit: 45,
+    timeLimit: 55,
     difficulty: "medium"
   },
   {
     id: 3,
-    type: "truefalse",
-    question: "HTTPS in einer Web-Adresse bedeutet, dass die Verbindung zwischen deinem Browser und der Webseite verschlüsselt und sicher ist.",
-    correct: true,
-    timeLimit: 30,
+    type: "code",
+    question: "Dieser Java-Code soll doppelte 'Person'-Objekte in einem HashSet verhindern. Was ist die Ausgabe von `people.size()`?",
+    code: `class Person {\n    private String name;\n    private int age;\n    public Person(String name, int age) { this.name = name; this.age = age; }\n}\n\nSet<Person> people = new HashSet<>();\npeople.add(new Person("Alice", 30));\npeople.add(new Person("Alice", 30));`,
+    correct: "2",
+    timeLimit: 60,
     difficulty: "medium"
   },
   {
     id: 4,
-    type: "truefalse",
-    question: "In REST APIs steht POST immer für das Lesen von Daten.",
-    correct: false,
-    timeLimit: 30,
+    type: "code",
+    question: "Welcher Destruktor wird in diesem C++ Code aufgerufen, was zu einem Speicherleck führt?",
+    code: `class Base { public: ~Base() { /*...*/ } };\nclass Derived : public Base { public: ~Derived() { /*...*/ } };\n\nBase* ptr = new Derived();\ndelete ptr;`,
+    correct: "Nur der Base-Destruktor",
+    timeLimit: 55,
     difficulty: "medium"
   },
   {
     id: 5,
-    type: "input",
-    question: "Wie heißt das weltweit populärste System zur Versionskontrolle von Code, das von Linus Torvalds entwickelt wurde?",
-    correct: "Git",
-    timeLimit: 30,
+    type: "mc",
+    question: "Welches war der primäre Anwendungsbereich für die Programmiersprache COBOL?",
+    options: [
+      "Wissenschaftliche Berechnungen",
+      "Militärprogramme",
+      "Geschäftsanwendungen",
+      "Robotersteuerung"
+    ],
+    correct: 2,
+    timeLimit: 45,
     difficulty: "medium"
   },
   {
     id: 6,
     type: "code",
-    question: "Was gibt dieser Code aus?",
-    code: `console.log(typeof null);`,
-    correct: "object",
-    timeLimit: 45,
+    question: "Diese C-Funktion hat einen Fehler und greift auf ungültigen Speicher zu. An welcher Stelle tritt der Fehler auf?",
+    code: `int sum_array(int *arr, int size) {\n    int sum = 0;\n    for (int i = 0; i <= size; i++) {\n        sum += arr[i];\n    }\n    return sum;\n}`,
+    correct: "Die Schleifenbedingung (i <= size)",
+    timeLimit: 50,
     difficulty: "medium"
   },
-  // Neue Fragen
+  // Bestehende Fragen, IDs angepasst
   {
     id: 7,
     type: "mc",

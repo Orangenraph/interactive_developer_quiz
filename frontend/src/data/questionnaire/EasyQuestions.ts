@@ -3,50 +3,52 @@
 import { McQuestion, TrueFalseQuestion, InputQuestions } from '../BaseQuestions';
 
 export const EASY_QUESTIONS: (McQuestion | TrueFalseQuestion | InputQuestions)[] = [
-  // Bestehende Fragen
   {
     id: 1,
     type: "mc",
-    question: "Welche Programmiersprache wird hauptsächlich für Raiffeisen's Backend Services verwendet?",
-    options: ["Java", "Python", "C#", "JavaScript"],
-    correct: 0,
-    timeLimit: 60,
+    question: "Wer ist der Schöpfer von Python?",
+    options: ["Bjarne Stroustrup", "James Gosling", "Guido van Rossum", "Rasmus Lerdorf"],
+    correct: 2,
+    timeLimit: 30,
     difficulty: "easy"
   },
   {
     id: 2,
     type: "mc",
-    question: "Welches dieser Geräte ist ein Ausgabegerät?",
-    options: ["Tastatur", "Monitor", "Maus", "Scanner"],
+    question: "Wofür steht die Abkürzung 'HTML'?",
+    options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyper Transfer Markup Language"],
+    correct: 0,
+    timeLimit: 25,
+    difficulty: "easy"
+  },
+  {
+    id: 3,
+    type: "mc",
+    question: "Wer ist als 'Vater von Java' bekannt?",
+    options: ["Dennis Ritchie", "Bjarne Stroustrup", "Guido van Rossum", "James Gosling"],
+    correct: 3,
+    timeLimit: 30,
+    difficulty: "easy"
+  },
+  {
+    id: 4,
+    type: "mc",
+    question: "Wer hat die Programmiersprache C entwickelt?",
+    options: ["Bjarne Stroustrup", "Dennis Ritchie", "James Gosling", "Ken Thompson"],
     correct: 1,
     timeLimit: 30,
     difficulty: "easy"
   },
   {
-    id: 3,
-    type: "truefalse",
-    question: "Ein Byte besteht aus 16 Bits.",
-    correct: false,
-    timeLimit: 20,
-    difficulty: "easy"
-  },
-  {
-    id: 4,
-    type: "truefalse",
-    question: "CSS steht für Cascading Style Sheets.",
-    correct: true,
-    timeLimit: 20,
-    difficulty: "easy"
-  },
-  {
     id: 5,
-    type: "input",
-    question: "Welches Kürzel steht für das bekannteste Hypertext-Protokoll im Web?",
-    correct: "HTTP",
-    timeLimit: 25,
+    type: "mc",
+    question: "Was war die primäre Motivation für die Entwicklung von JavaScript?",
+    options: ["Clientseitige Interaktion in Webbrowsern.", "Schreiben von Betriebssystemen.", "Entwicklung von Serveranwendungen.", "Erstellung von Datenbanken."],
+    correct: 0,
+    timeLimit: 40,
     difficulty: "easy"
   },
-  // Neue Fragen
+  // Bestehende Fragen, IDs angepasst
   {
     id: 6,
     type: "mc",
